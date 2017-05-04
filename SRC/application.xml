@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<application xmlns="http://ns.adobe.com/air/application/3.7">
+	
+	<id>BORNESTAMMTISCH</id> 
+	<versionNumber>1.0</versionNumber> 
+	<filename>BORNESTAMMTISCH</filename> 
+	
+	<name>BORNE_STAMMTISCH</name> 
+	<description></description> 
+	<copyright></copyright> 
+	
+	
+	  <!-- prod-->
+	  <!--
+	  <initialWindow>
+		<title>BORNE_STAMMTISCH</title> 
+		<content>BORNESTAMMTISCH.swf</content> 
+		<systemChrome>none</systemChrome>
+		<transparent>false</transparent>
+		<visible>true</visible>
+		<minimizable>false</minimizable>
+		<maximizable>false</maximizable>
+		<resizable>false</resizable>
+		<x>0</x>
+		<y>0</y>
+	  </initialWindow>
+	  -->
+	  
+	  
+	  <!-- debug--><!-- illus : 76%-->
+	  
+	  <initialWindow>
+		<title>BORNE_STAMMTISCH</title> 
+		<content>BORNESTAMMTISCH.swf</content> 
+		<systemChrome>standard</systemChrome>
+		<transparent>false</transparent>
+		<visible>true</visible>
+		<width>1252</width><height>878</height>
+		<x>0</x><y>0</y>
+	  </initialWindow>
+	  
+	
+	<!--  
+	More options:
+	http://livedocs.adobe.com/flex/3/html/File_formats_1.html#1043413
+	-->
+</application>

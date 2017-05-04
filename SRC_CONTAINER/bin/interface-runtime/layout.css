@@ -1,0 +1,50 @@
+/*
+UTILS
+*/
+
+.fullscreen{
+	width-resize-type:child2parent;
+	height-resize-type:child2parent;
+	margin-left:-1px;margin-right:-1px;margin-top:-1px;margin-bottom:-1px;
+}
+
+.center{
+	margin-left:50%;margin-right:50%;margin-top:50%;margin-bottom:50%;
+}
+.hcenter{
+	margin-left:50%;margin-right:50%;
+}
+.vcenter{
+	margin-top:50%;margin-bottom:50%;
+}
+
+
+/*
+_____________________________________________________________________________________________
+HOME
+*/
+
+
+
+
+/*
+_____________________________________________________________________________________________
+POPUP
+*/
+
+#popup{
+	layout-width:929;
+	layout-height:254;
+	
+}
+#popup_{
+	layout-width:929;
+	layout-height:254;
+	background-color:#ffffff;
+}
+
+#popup_btnclose{
+	margin-right:25px;
+	margin-top:25px;
+}
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<application xmlns="http://ns.adobe.com/air/application/3.7">
+	
+	<id>STAMMTISCHCONTAINER</id> 
+	<versionNumber>1.0</versionNumber> 
+	<filename>STAMMTISCHCONTAINER</filename> 
+	
+	<name>STAMMTISCH_CONTAINER</name> 
+	<description></description> 
+	<copyright></copyright> 
+	
+	
+	  <!-- prod-->
+	  <!--
+	  <initialWindow>
+		<title>STAMMTISCH_CONTAINER</title> 
+		<content>STAMMTISCHCONTAINER.swf</content> 
+		<systemChrome>none</systemChrome>
+		<transparent>false</transparent>
+		<visible>true</visible>
+		<minimizable>false</minimizable>
+		<maximizable>false</maximizable>
+		<resizable>false</resizable>
+		<width>1920</width><height>1080</height>
+		<x>0</x>
+		<y>0</y>
+	  </initialWindow>
+	  -->
+	  
+	  
+	  <!-- debug-->
+	  
+	  <initialWindow>
+		<title>STAMMTISCH_CONTAINER</title> 
+		<content>STAMMTISCHCONTAINER.swf</content> 
+		<systemChrome>standard</systemChrome>
+		<transparent>false</transparent>
+		<visible>true</visible>
+		<width>1440</width><height>810</height>
+		<x>0</x><y>0</y>
+	  </initialWindow>
+	  
+	
+	<!--  
+	More options:
+	http://livedocs.adobe.com/flex/3/html/File_formats_1.html#1043413
+	-->
+</application>

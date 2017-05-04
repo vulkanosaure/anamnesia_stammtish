@@ -1,0 +1,74 @@
+<languageVersion : 1.0;>
+
+kernel LuminosityFilter
+<   namespace : "data.filters";
+    vendor : "Vincent Huss";
+    version : 1;
+    description : "";
+>
+{
+    input image4 src;
+    output pixel4 dst;
+    parameter float luminosity < minValue: -1.0; maxValue: 1.0; defaultValue: 0.0; >;
+    parameter float contrast < minValue: -1.0; maxValue: 1.0; defaultValue: 0.0; >;
+    parameter float saturation < minValue: -1.0; maxValue: 1.0; defaultValue: 0.0; >;
+    
+    
+    
+    void
+    evaluatePixel()
+    {
+        dst = sampleNearest(src,outCoord());
+       
+        
+        //luminosity
+        
+        dst.r += luminosity;
+        dst.g += luminosity;
+        dst.b += luminosity;
+        
+        
+        
+        //contrast
+        
+        float _lum = dst.r + dst.g + dst.b;
+        float _coeffcontrast = 0.5;
+
+        //si pixel lumineux
+        if(contrast > 0.0){
+            if(_lum > 1.5){
+                dst.r += contrast * _coeffcontrast;
+                dst.g += contrast * _coeffcontrast;
+                dst.b += contrast * _coeffcontrast;
+            }
+            //si pixel sombre
+            else{
+                dst.r += contrast * -1.0 * _coeffcontrast;
+                dst.g += contrast * -1.0 * _coeffcontrast;
+                dst.b += contrast * -1.0 * _coeffcontrast;
+            }
+        }
+        else{
+            
+            float _diff = 0.5 - ((dst.r + dst.g + dst.b) / 3.0);
+            dst.r += _diff * (-contrast);
+            dst.g += _diff * (-contrast);
+            dst.b += _diff * (-contrast);
+            
+        }
+        
+        
+        
+        //saturation
+        
+        float _moySaturation = (dst.r + dst.g + dst.b) / 3.0;
+        dst.r += saturation * (dst.r - _moySaturation);
+        dst.g += saturation * (dst.g - _moySaturation);
+        dst.b += saturation * (dst.b - _moySaturation);
+        
+        
+    
+    }
+    
+   
+}

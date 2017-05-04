@@ -1,0 +1,27 @@
+<html>
+<head>
+	<script type="text/javascript" src="js/swfobject.js"></script>
+</head>
+
+<body bgcolor="#ff0000">
+	<div id="diaporama" style="width:400px; height:250px;">
+		<script type="text/javascript">
+			var so = new SWFObject('swf/bandeau.swf', 'bandeau', '100%', '100%', '9', '', true);
+			//so.useExpressInstall('expressinstall.swf');
+			//so.addParam("allowFullScreen", "true");
+			so.addParam("wmode", "transparent");
+			
+			so.addVariable("pathxml", "xml/bandeau_diapo.xml");
+			so.addVariable("basedir_img", "images/");
+			so.addVariable("speed", 5000);
+			so.addVariable("speed_fadein", 1);
+			so.addVariable("speed_fadeout", 1);
+			so.addVariable("offset", 0);
+			so.addVariable("resize", "fit");		//possible values : "none", "fit", "border"
+			
+			so.write('diaporama');
+		</script>
+		<noscript></noscript>
+	</div>
+</body>
+</html>

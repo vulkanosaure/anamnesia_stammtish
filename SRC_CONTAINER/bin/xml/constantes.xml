@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	
+	<config>
+		
+		<list_langs>fr</list_langs>
+		
+		<mouse_visible>1</mouse_visible>
+		<delay_iddle>180</delay_iddle>
+		<delay_anim_home>3.0</delay_anim_home>
+		
+		<time_diapo_territoire>5</time_diapo_territoire>
+		
+		<!-- le repertoire php/ doit etre un sous-rep de ce dossier, <path_server> + "php/send_email.php -->
+		<path_server>http://appinstrasbourg.com/custom/stamtish/</path_server>
+		
+		
+		
+	</config>
+	
+	
+</data>

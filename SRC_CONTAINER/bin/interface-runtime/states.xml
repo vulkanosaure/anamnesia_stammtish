@@ -1,0 +1,28 @@
+<states>
+
+	
+	<root container="base" htmltitle="{flashvars:SITE_NAME}" default="none">
+		<effect_def>
+			<effect>fadeEffect</effect>
+			<tempo>0.2</tempo>
+		</effect_def>
+		
+		
+		<!-- 
+		<actu container="" default="" htmltitle="">
+			<dobj></dobj>
+			
+			<actu_nopics>
+				
+			</actu_nopics>
+			<actu_pics>
+				<dobj>#thumbside</dobj>
+			</actu_pics>
+		</actu>
+		 -->
+		 <none></none>
+		 
+	</root>
+	
+	
+</states>

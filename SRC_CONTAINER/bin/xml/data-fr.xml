@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<data>
+	<fr>
+		<home>
+			<title><![CDATA[PARTEZ À LA DÉCOUVERTE
+DU KOCHERSBERG]]></title>		
+			<subtitle><![CDATA[Touchez l'écran pour commencer...]]></subtitle>
+			<today><![CDATA[Aujourd'hui]]></today>
+			
+		</home>
+		
+		
+		<questions>
+			
+			<item>
+				<text><![CDATA[OU MANGER
+CE MIDI ?]]></text>
+				<tags>Se restaurer</tags>
+				<cattype>cat_label</cattype>					<!-- cat_label / sous_cat_label / sous_sous_cat_label -->
+				<meteo>*</meteo>								<!-- entre 2 et 4 => "2,4" ou * (en degré celsius) -->
+				<time>00:00,14:00</time>						<!-- 12:30,15:00 ou * (hh:mm)-->
+				<img_bg>restaurer</img_bg>
+			</item>
+			<item>
+				<text><![CDATA[OU MANGER
+CE SOIR ?]]></text>
+				<tags>Se restaurer</tags>
+				<cattype>cat_label</cattype>	
+				<meteo>*</meteo>
+				<time>14:00,23:00</time>
+				<img_bg>restaurer</img_bg>
+			</item>
+			
+			<item>
+				<text><![CDATA[QUE FAIRE
+EN FAMILLE ?]]></text>
+				<tags>En famille</tags>
+				<cattype>sous_cat_label</cattype>	
+				<meteo>*</meteo>
+				<time>*</time>
+				<img_bg>esc_famille</img_bg>
+			</item>
+			
+			<item>
+				<text><![CDATA[LES INCONTOURNABLES
+DU TERRITOIRE]]></text>
+				<tags>incontournable</tags>
+				<meteo>*</meteo>
+				<time>*</time>
+				<img_bg>incontournables</img_bg>
+			</item>
+			
+			<item>
+				<text><![CDATA[ÉVÈNEMENTS À VENIR
+AU KOCHERSBERG]]></text>
+				<tags>Événements</tags>
+				<cattype>sous_cat_label</cattype>	
+				<meteo>*</meteo>
+				<time>*</time>
+				<img_bg>actualites</img_bg>
+			</item>
+			
+			<item>
+				<text><![CDATA[BALADES ET RANDONNÉES ?]]></text>
+				<tags>Événements</tags>					<!-- à remplir-->
+				<cattype>sous_cat_label</cattype>	
+				<meteo>*</meteo>
+				<time>*</time>
+				<img_bg>esc_nature</img_bg>
+			</item>
+			
+			<item>
+				<text><![CDATA[SORTIES EQUESTRES ?]]></text>
+				<tags>Événements</tags>					<!-- à remplir-->
+				<cattype>sous_cat_label</cattype>	
+				<meteo>*</meteo>
+				<time>*</time>
+				<img_bg>esc_nature</img_bg>
+			</item>
+			
+			<item>
+				<text><![CDATA[SENTIERS À 
+VÉLO ET EN VTT]]></text>
+				<tags>Événements</tags>					<!-- à remplir-->
+				<cattype>sous_cat_label</cattype>	
+				<meteo>*</meteo>
+				<time>*</time>
+				<img_bg>esc_nature</img_bg>
+			</item>
+			
+			<item>
+				<text><![CDATA[LES AGRICULTEURS VOUS
+OUVRENT LEUR PORTES]]></text>
+				<tags>visite de ferme</tags>
+				<cattype>sous_sous_cat_label</cattype>	
+				<meteo>*</meteo>
+				<time>*</time>
+				<img_bg>esc_nature</img_bg>
+			</item>
+			
+		</questions>
+		
+		
+		
+		
+		<share_mail>
+			<btn_back><![CDATA[Retour]]></btn_back>
+			<popup_title><![CDATA[Confirmation d'envoi]]></popup_title>
+			<popup_desc><![CDATA[Votre message a bien été envoyé]]></popup_desc>
+			
+			<dest><![CDATA[Destinataire :]]></dest>
+			<msg_error><![CDATA[Adresse invalide]]></msg_error>
+			<msg_error_empty><![CDATA[Entrez une adresse]]></msg_error_empty>
+			<input_email_help><![CDATA[Entrez votre adresse email]]></input_email_help>
+			<btn_send><![CDATA[ENVOYER
+PAR MAIL]]></btn_send>
+			<btn_print><![CDATA[IMPRIMER
+VOTRE LISTE]]></btn_print>
+			
+			
+		</share_mail>
+		
+		
+		
+		<screen_main>
+			
+			<subtitle><![CDATA[CONSULTEZ NOS <span class='MS900_15_FFFFFF'>%%nbrep%% SUGGESTIONS</span> DE RÉPONSES !]]></subtitle>
+			<subtitle_favourite><![CDATA[VOICI LA LISTE DE VOS ARTICLES FAVORIS]]></subtitle_favourite>
+			<btn_like><![CDATA[Ajoutez à votre sélection]]></btn_like>
+			<btn_next><![CDATA[FICHE
+SUIVANTE]]></btn_next>
+			<btn_prev><![CDATA[FICHE
+PRÉCÉDENTE]]></btn_prev>
+			
+
+			
+		</screen_main>
+		
+		
+		<rubrics>
+			<actualites>
+				<title><![CDATA[ACTUALITÉS]]></title>
+				<tags>Événements</tags>
+				<cattype>sous_cat_label</cattype>
+			</actualites>
+			
+			<esc_nature>
+				<title><![CDATA[ESCAPADE PLEIN AIR]]></title>
+				<tags>Plein air</tags>
+				<cattype>sous_cat_label</cattype>
+			</esc_nature>
+			<esc_territoire>
+				<title><![CDATA[ESCAPADE TERROIR]]></title>
+				<tags>Terroir</tags>
+				<cattype>sous_cat_label</cattype>
+			</esc_territoire>
+			<esc_famille>
+				<title><![CDATA[ESCAPADE FAMILLE]]></title>
+				<tags>En famille</tags>
+				<cattype>sous_cat_label</cattype>
+			</esc_famille>
+			
+			
+			<incontournables>
+				<title><![CDATA[LES INCONTOURNABLES]]></title>
+				<tags>incontournable</tags>
+			</incontournables>
+			
+			<checkout>
+				<title><![CDATA[À VOIR
+À FAIRE]]></title>
+				<tags></tags>	<!-- no rubric-->
+			</checkout>
+			
+			<checkout_0>
+				<title><![CDATA[TERROIR ET VIGNOBLES]]></title>
+				<tags>Terroir et vignobles</tags>
+				<cattype>sous_cat_label</cattype>
+			</checkout_0>
+			<checkout_1>
+				<title><![CDATA[ARTISTES ET ARTISANS]]></title>
+				<tags>Artistes et artisans</tags>
+				<cattype>sous_cat_label</cattype>
+			</checkout_1>
+			<checkout_2>
+				<title><![CDATA[CULTURE ET MONUMENTS]]></title>
+				<tags>Culture et monuments</tags>
+				<cattype>sous_cat_label</cattype>
+			</checkout_2>
+			<checkout_3>
+				<title><![CDATA[LOISIRS ET DÉTENTE]]></title>
+				<tags>Loisirs et détente</tags>
+				<cattype>sous_cat_label</cattype>
+			</checkout_3>
+			
+			
+			
+			<dormir>
+				<title><![CDATA[SE LOGER]]></title>
+				<tags>Se loger</tags>
+				<cattype>cat_label</cattype>
+			</dormir>
+			<restaurer>
+				<title><![CDATA[SE RESTAURER]]></title>
+				<tags>Se restaurer</tags>
+				<cattype>cat_label</cattype>
+			</restaurer>
+			
+			
+			
+			
+			
+			<esc>
+				<title><![CDATA[ESCAPADES]]></title>
+			</esc>
+			
+			<favourite>
+				<title><![CDATA[VOS FAVORIS]]></title>
+			</favourite>
+			
+			
+			
+			<!-- -->
+			<embassadeurs>
+				<title><![CDATA[LES AMBASSADEURS]]></title>
+				<titlepage><![CDATA[LE KOCHERSBERG, LES AMBASSADEURS]]></titlepage>
+				
+				<content>
+					<item><text><![CDATA[Kochersberg sans doute d'une racine paléo européenne kuk-koch = la<br />colline) Rangen (Randan), Mittelkurtz (mutuli curtis = « le domaine de la borne limite ». « Quel beau jardin » se serait écrié Louis XIV<br />découvrant pour la première fois le Kochersberg du haut du col de Saverne. Aujourd'hui encore, le<br />Kochersberg, espace vallonné dont les paysages changent au gré des saisons, demeure terre de tradition.<br />Situé aux portes de Strasbourg, entre la vallée de la Zorn au Nord<br />et la vallée de la Bruche au Sud, le Kochersberg est à l'écart des grands axes de communication. La richesse proverbiale de ces terres, déjà appréciée<br />à l'époque romaine, a conféré à cette région sa vocation essentiellement agricole ou l'on pratique la<br />polyculture. Les paysans du Kochersberg ont su tirer parti de cette richesse, développant le commerce des produits.]]></text></item>
+					<item><text><![CDATA[Ces dernières décennies ont vu de nouveaux liens se tisser entre la ville et la<br />campagne par l'arrivée de citadins dans les villages du Kochersberg. Cependant, l'extension des villages n'a guère altéré le cachet traditionnel du territoire<br />: villages à flanc de coteaux ou au creux des vallons, habitations regroupées autour des clochers, grands corps de fermes soigneusement entretenus ou restaurés, clochers traditionnels<br />à deux pans, croix rurales jalonnant les chemins vicinaux...]]></text></item>
+					<item><text><![CDATA[3]]></text></item>
+					<item><text><![CDATA[4]]></text></item>
+					<item><text><![CDATA[5]]></text></item>
+					<item><text><![CDATA[6]]></text></item>
+					<item><text><![CDATA[7]]></text></item>
+					<item><text><![CDATA[8]]></text></item>
+				</content>
+				
+			</embassadeurs>
+			
+			<territoire>
+				<title><![CDATA[LE TERRITOIRE]]></title>
+				<titlepage><![CDATA[LE KOCHERSBERG, SON HISTOIRE]]></titlepage>
+				
+				<content>
+					<item><text><![CDATA[Kochersberg sans doute d'une racine paléo européenne kuk-koch = la<br />colline) Rangen (Randan), Mittelkurtz (mutuli curtis = « le domaine de la borne limite ». « Quel beau jardin » se serait écrié Louis XIV<br />découvrant pour la première fois le Kochersberg du haut du col de Saverne. Aujourd'hui encore, le<br />Kochersberg, espace vallonné dont les paysages changent au gré des saisons, demeure terre de tradition.<br />Situé aux portes de Strasbourg, entre la vallée de la Zorn au Nord<br />et la vallée de la Bruche au Sud, le Kochersberg est à l'écart des grands axes de communication. La richesse proverbiale de ces terres, déjà appréciée<br />à l'époque romaine, a conféré à cette région sa vocation essentiellement agricole ou l'on pratique la<br />polyculture. Les paysans du Kochersberg ont su tirer parti de cette richesse, développant le commerce des produits.]]></text></item>
+					<item><text><![CDATA[Ces dernières décennies ont vu de nouveaux liens se tisser entre la ville et la<br />campagne par l'arrivée de citadins dans les villages du Kochersberg. Cependant, l'extension des villages n'a guère altéré le cachet traditionnel du territoire<br />: villages à flanc de coteaux ou au creux des vallons, habitations regroupées autour des clochers, grands corps de fermes soigneusement entretenus ou restaurés, clochers traditionnels<br />à deux pans, croix rurales jalonnant les chemins vicinaux...]]></text></item>
+					<item><text><![CDATA[3]]></text></item>
+					<item><text><![CDATA[3]]></text></item>
+					<item><text><![CDATA[4]]></text></item>
+					<item><text><![CDATA[5]]></text></item>
+					<item><text><![CDATA[6]]></text></item>
+				</content>
+			</territoire>
+			
+			
+			
+		</rubrics>
+		
+		
+		<global>
+			<prev><![CDATA[PRÉCÉDENT]]></prev>
+			<next><![CDATA[SUIVANT]]></next>
+			<btn_menu1><![CDATA[MENU]]></btn_menu1>
+			<btn_menu2><![CDATA[MONTREZ- NOUS]]></btn_menu2>
+			<your_selection><![CDATA[Votre sélection]]></your_selection>
+			
+			
+		</global>
+		
+		
+		
+		<credits>
+			<title><![CDATA[CRÉDITS]]></title>
+			<desc><![CDATA[<span class='MS900_15_FFFFFF'>COLLECTIONS</span>
+			
+<span class='MS300_15_FFFFFF'>Lorem ipsum dolor sit amet
+Consectetur adipiscing elit. 
+Nunc consectetur tortor in scelerisque bibendum.</span>
+
+
+<span class='MS900_15_FFFFFF'>PHOTOGRAPHIES</span>
+
+<span class='MS300_15_FFFFFF'>Lorem ipsum dolor sit amet
+Consectetur adipiscing elit. 
+Nunc consectetur tortor in scelerisque bibendum.</span>]]></desc>
+		
+		</credits>
+		
+	</fr>
+</data>

@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<asxml>
+	<ConstantesProvider xmlList="{file:xml/constantes.xml}" />
+	<ConstantesProvider xmlList="{file:xml/data-en.xml}" />
+	<ConstantesProvider xmlList="{file:xml/data-fr.xml}" />
+	<ConstantesProvider xmlList="{file:xml/data-de.xml}" />
+	
+	<ConstantesProvider xmlList="{file:xml/dynamic-data-fr.xml}" />
+	
+	
+	<ASCodeHome id="ascodehome" />
+	<ASCodeMenu id="ascodemenu" />
+	<ASCodeHeader id="ascodeheader" />
+	<ASCodeScreenMain id="ascodescreenmain" />
+	<ASCodeMenu2 id="ascodemenu2" />
+	<ASCodeTerritoire id="ascodeterritoire" />
+	<ASCodeEmbassadeur id="ascodeembassadeur" />
+	<ASCodeEntermail id="ascodeentermail" />
+	
+	
+	<ASCodeMain id="ascodemain" />
+	
+	
+	<!--
+	<img src="images/bg.jpg" />
+	-->
+	
+	
+	<is id="bg_permanent">
+		<is id="asset_overlay_bg_color_permanent" template="asset_overlay_bg_color" />
+	</is>
+	
+	
+	<is id="empty_screen">
+		<is></is>
+	</is>
+	
+	
+	
+	<is id="screen_main">
+	
+		<is>
+			
+			<is id="video_container">
+				<is id="video_container_sub"></is>
+			</is>
+		
+			<is id="bg_screen_main">
+				<is>
+					<is id="asset_bg_alpha_right" template='asset_bg_alpha_right' marginLeft='1064px' marginTop='0px'></is>
+				</is>
+			</is>
+			
+			
+			<is id="zone_center" marginLeft="263px" marginTop="208px">
+				<is>
+					
+					
+					<Text id='text_title' marginLeft='226px' marginTop='0px' embedFonts='true' multiline='true' width='500' removeLineBreak="true"><![CDATA[]]></Text>
+					
+					<Text id='text_subtitle' marginLeft='226px' marginTop='75px' embedFonts='true' width='500'><![CDATA[]]></Text>
+					
+					<is id="screen_main_zone_scroll" marginLeft='150px' marginTop='139px'>
+						<is>
+							<Scrollbar id="scroll_main" touchMode="true" template="ScrollbarSkin" width="644" height="420" arrow="false" always_visible="true" handleAutoSize="false">
+								<is id="scroll_main_content">
+									<!-- 
+									<Component_item_scroll urlimg="images/articles/img-article-listing1.png" />
+									 -->
+								</is>
+							</Scrollbar>
+							
+							<is id="asset_overlay_scrollbar" template="asset_overlay_scrollbar" touchable="false" marginTop="100px" />
+							
+							<is id="btn_goto_mail" onmousedown='as:#ascodescreenmain  onClickGotoMail' clickableMargin='0' cm_right="70" cm_vert="30" cm_left="-100" marginLeft="315px" marginTop="452px">
+								<Text id='text_btn_goto_mail' embedFonts='true' width='200' multiline="true"><![CDATA[]]></Text>
+								<is template="asset_btn_send_mail" scaleX="0.65" scaleY="0.65" marginLeft="216px" marginTop="2px" />
+							</is>
+							
+							<is id="btn_print" onmousedown='as:#ascodescreenmain  onClickPrint' clickableMargin='0' cm_right="70" cm_vert="30" marginLeft="130px" marginTop="452px">
+								<Text id='text_btn_print' embedFonts='true' width='200' multiline="true"><![CDATA[]]></Text>
+								<is template="asset_btn_print" scaleX="0.65" scaleY="0.65" marginLeft="216px" marginTop="2px" />
+							</is>
+							
+						</is>
+					</is>
+					
+					
+					
+					
+				</is>
+			</is>
+			
+			
+			<is id='zone_actu' marginLeft='1103px' marginTop='206px'>
+			
+				<is>
+					<Text id='text_title_actu' embedFonts='true' width='240'><![CDATA[]]></Text>
+					
+					
+					<Scrollbar id="scroll_zone_list_actu" touchMode="true" template="ScrollbarSkin" width="290" height="389" marginTop='44px' arrow="false" always_visible="true" handleAutoSize="false">
+						<is id='zone_list_actu'>
+							<behaviours><VLayout interline="30" /></behaviours>
+							<!-- 
+							
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Rattrapage collecte 1er et 11 novembre</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>Le mardi 1er novembre (Toussaint) et le vendredi 11 novembre (Armistice) étant fériés, la collecte des déchets (recyclables et non recyclables) sera décalée d’une journée pour la plupart des villages de la communauté de communes</span>]]></Text>
+							</is>
+							
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Exposition : "Émotions partagées"</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>Béatrice WOLF et ses élèves de l'atelier d'aquarelle de la Klamm exposent au Trèfle à Truchtersheim du 27 septembre au 19 novembre 2016.</span>]]></Text>
+							</is>
+							
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Stage BAFA : deviens animateur !</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>Un stage BAFA est organisé à Stutzheim-Offenheim du 26 octobre au 2 novembre 2016.
+8 jours de formation générale permettant d'acquérir les notions de base pour assurer les fonctions d'animation en ACEM.</span>]]></Text>
+							</is>
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Soirée sur le thème d'Halloween</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>Ouverture exceptionnelle de la MIK jusqu’à minuit : jeux de société, tournoi de jeu vidéo et buffet gourmand?! Le thème? Halloween...
+Venez déguisés, maquillages gratuits sur place?! Gratuit, accès libre, tout public.</span>]]></Text>
+							</is>
+							
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Les vacances d'automne</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>Jeux, bricolages, sorties, ateliers…
+Retrouvez ici le programme des vacances d'automne proposé les Accueils de Loisirs de la CC du Kochersberg.</span>]]></Text>
+							</is>
+							
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Les Mercredis Ré-Créatifs</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>Jeux, bricolages, sorties, ateliers…
+Vous trouverez dans cette brochure le programme des Mercredis Ré-Créatifs proposé par les Accueils de Loisirs de la CC du Kochersberg couvrant la période, de septembre à décembre 2016.</span>]]></Text>
+							</is>
+							
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Bourse aux jouets, vêtements</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>Dimanche 13 novembre
+9h – Centre culturel
+Jouets, vêtements, matériels de puériculture… Attention, le nombre de places est limité, l’inscription comprend une table et deux chaises. Un îlot central, spécifique aux objets volumineux, sera mis à disposition. Buvette et petite restauration. Entrée libre. </span>]]></Text>
+							</is>
+							
+							
+							<is>
+								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Déchetteries : horaires d'hiver</span>]]></Text>
+								<Text marginTop='15px' embedFonts='true' multiline='true' width='255'><![CDATA[<span class='MS300_11_FFFFFF'>A partir du mercredi 2 novembre 2016, et jusqu'au 31 mars 2017, les déchetteries adoptent les horaires d'hiver.
+Attention : les mardi 1er novembre et vendredi 11 novembre étant fériés, les déchetteries seront fermées.</span>]]></Text>
+							</is>
+							
+							 -->
+						</is>
+					</Scrollbar>
+				</is>
+			</is>
+			
+			
+			
+			
+			<is id="subscreen_detail" marginLeft="449px">
+				<is id="subscreen_detail_sub">
+					<is id='asset_detail_bg' template='asset_detail_bg' marginLeft='177px'></is>
+					<is id='asset_bg_detail_side' template='asset_bg_detail_side' marginLeft='895px' marginTop='283px'></is>
+					<is id='asset_detail_shadow' template='asset_detail_shadow' marginLeft='1px'></is>
+					
+					<is id='asset_detail_img' marginLeft='178px'>
+						<Component_detail_img id="component_detail_img" />
+					</is>
+					
+					<is id='detail_content'>
+						
+						<Text id='text_detail_infos' marginLeft='231px' marginTop='727px' embedFonts='true' multiline='true' width='300'><![CDATA[]]></Text>
+						
+						<is id="btn_qrcode" marginLeft='216px' marginTop='840px' scaleX="0.85" scaleY="0.85">
+							
+						</is>
+						
+						
+						<!-- 
+						<is id='detail_zone_share' marginLeft='230px' marginTop='712px'>
+							<is id='asset_share_google' template='asset_share_google'></is>
+							<is id='asset_share_twitter' template='asset_share_twitter' marginLeft='45px'></is>
+							<is id='asset_share_fb' template='asset_share_fb' marginLeft='90px'></is>
+						</is>
+						 -->
+						 
+						<is id="container_btn_like" marginLeft='251px' marginTop='685px'>
+							<Text id='text_like_btn' embedFonts='true' marginLeft='36px' marginTop='-10px'><![CDATA[]]></Text>
+							<is id="btn_like" onmousedown='as:#ascodescreenmain  onClickLike' clickableMargin='20' cm_right="180">
+								<is id='icon_like_add' template='Icon_like_add'></is>
+							</is>
+						</is>
+						
+						
+						<Scrollbar id="scroll_detail" marginLeft='231px' marginTop='374px' touchMode="true" template="ScrollbarSkin" width="640" height="270" arrow="false" always_visible="true" handleAutoSize="false">
+							<is>
+								<Text id='text_detail_desc' embedFonts='true' multiline='true' width='600'><![CDATA[]]></Text>
+							</is>
+						</Scrollbar>
+						<Text id='text_detail_title' marginLeft='231px' marginTop='311px' embedFonts='true' width='615'><![CDATA[<span class='MS900_30_FFFFFF'>NOM DE LA SORTIE</span>]]></Text>
+						
+					</is>
+					
+					
+					<is id="btn_detail_close" onmousedown='as:#ascodescreenmain  onClickCloseDetail' clickableMargin='30' cm_left="580" cm_bottom="276" cm_top="280" marginLeft='134px' marginTop='281px'>
+						<is id='asset_bg_btn_close_detail' template='asset_bg_btn_close_detail'></is>
+						<is template='asset_btn_close_footer' marginLeft='19px' marginTop='19px'></is>
+					</is>
+					
+					
+					<is id='detail_page_counter' marginLeft='850px' marginTop='307px'>
+						
+						<Component_pagination id='component_pagination_detail' />
+					</is>
+					
+					<is id='detail_pagination' marginLeft='926px' marginTop='458px'>
+						
+						<is id='btn_detail_pagination_next' onmousedown='as:#ascodescreenmain  onClickNextPage' clickableMargin='5' cm_horiz="35" cm_top="40" cm_right="60">
+							<Text id='text_detail_pagination_next' marginLeft='41px' marginTop='0px' embedFonts='true' multiline='true' width='150'><![CDATA[]]></Text>
+							<is id='asset_detail_pagination_next' template='asset_detail_pagination_next' marginTop='5px'></is>
+						</is>
+						
+						<is id='btn_detail_pagination_prev' onmousedown='as:#ascodescreenmain  onClickPrevPage' clickableMargin='5' cm_horiz="35" cm_bottom="45" cm_right="60" marginTop='51px'>
+							<Text id='text_detail_pagination_prev' marginLeft='41px' marginTop='0px' embedFonts='true' multiline='true' width='150'><![CDATA[]]></Text>
+							<is id='asset_detail_pagination_prev' template='asset_detail_pagination_prev' marginTop='3px'></is>
+						</is>
+					</is>
+					
+					
+					
+				</is>
+			</is>
+			
+		</is>
+	
+	</is>
+	
+	
+	
+	
+	
+	
+	<is id="screen_territoire">
+		<is>
+			
+			<is id="bg_territoire">
+				<is>
+					<is id="bg_territoire_diapo"></is>
+					<is id="asset_overlay_bg_transparent2" template="asset_overlay_bg_transparent" blendMode="multiply" />
+				</is>
+			</is>
+			
+			<is id='territoire_content' marginLeft='494px' marginTop='158px'>
+				<is>
+					
+					<Text id='text_territoire_title' embedFonts='true' width='785'><![CDATA[]]></Text>
+					
+					<is id="slider_text_territoire" marginTop='65px'></is>
+					
+				</is>
+			</is>
+			
+			<is id='territoire_pagination' marginLeft='846px' marginTop='680px'>
+				<is>
+					
+					<is id='btn_territoire_prev' marginLeft="-250px" onmousedown='as:#ascodeterritoire  onClickPrev' clickableMargin='45' cm_right="65">
+						<Text id='text_btn_territoire_prev' marginLeft='-15px' marginTop='4px' embedFonts='true' width='200'><![CDATA[]]></Text>
+						<is id='asset_territoire_pagination_prev' template='asset_detail_pagination_prev' marginLeft='199px'></is>
+					</is>
+					
+					<is id='btn_territoire_next' onmousedown='as:#ascodeterritoire  onClickNext' marginLeft='76px' clickableMargin='40' cm_left="55">
+						<Text id='text_btn_territoire_next' marginLeft='28px' marginTop='4px' embedFonts='true' width='200'><![CDATA[]]></Text>
+						<is id='asset_territoire_pagination_next' template='asset_detail_pagination_next' marginLeft="-15px"></is>
+					</is>
+					
+					
+					<is id='territoire_pagination_puces' marginLeft='0px' marginTop='16px'>
+						<Component_pagination id='component_pagination_territoire' />
+					</is>
+				</is>
+			</is>
+			
+			
+		</is>
+	</is>
+	
+	
+	
+	
+	
+	<is id="screen_embassadeur">
+		<is>
+			
+			<is id="bg_embassadeur">
+				<is>
+					<is id="asset_overlay_bg_transparent22" template="asset_overlay_bg_transparent" blendMode="multiply" />
+				</is>
+			</is>
+			
+			<is id='embassadeur_content' marginLeft='494px' marginTop='158px'>
+				<is>
+					
+					<Text id='text_embassadeur_title' embedFonts='true' width='785'><![CDATA[]]></Text>
+					
+					<is id="slider_text_embassadeur" marginTop='65px'></is>
+					
+				</is>
+			</is>
+			
+			<is id='embassadeur_pagination' marginLeft='846px' marginTop='680px'>
+				<is>
+					
+					<is id='btn_embassadeur_prev' marginLeft="-250px" onmousedown='as:#ascodeembassadeur  onClickPrev' clickableMargin='45' cm_right="65">
+						<Text id='text_btn_embassadeur_prev' marginLeft='-15px' marginTop='4px' embedFonts='true' width='200'><![CDATA[]]></Text>
+						<is id='asset_embassadeur_pagination_prev' template='asset_detail_pagination_prev' marginLeft='199px'></is>
+					</is>
+					
+					<is id='btn_embassadeur_next' onmousedown='as:#ascodeembassadeur  onClickNext' marginLeft='76px' clickableMargin='40' cm_left="55">
+						<Text id='text_btn_embassadeur_next' marginLeft='28px' marginTop='4px' embedFonts='true' width='200'><![CDATA[]]></Text>
+						<is id='asset_embassadeur_pagination_next' template='asset_detail_pagination_next' marginLeft="-15px"></is>
+					</is>
+					
+					
+					<is id='embassadeur_pagination_puces' marginLeft='0px' marginTop='16px'>
+						<Component_pagination id='component_pagination_embassadeur' />
+					</is>
+				</is>
+			</is>
+			
+			
+		</is>
+	</is>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<is id="screen_menu">
+		<is>
+			
+			<is>
+				
+				<is id="menu_zone_bottom" marginLeft='460px' marginTop='790px'>
+					<is id='asset_menu_bottom' template='asset_menu_bottom'></is>
+				</is>
+				
+				<is id='btn_actualites' onmousedown='as:#ascodemenu  onClickMenu  actualites' clickableMargin='0' marginLeft='1199px' marginTop='0px'>
+					<is>
+						<is id='asset_btn_actualites' template='asset_btn_actualites'></is>
+						
+						<is marginLeft='0px' marginTop='398px' id="sub_btn_actualites">
+							<is>
+								<Text id='text_btn_actualites' marginTop='106px' embedFonts='true' width='285'><![CDATA[]]></Text>
+								<is id='asset_icon_btn_actualites' template='asset_icon_btn_actualites' marginLeft='102px'></is>
+							</is>
+						</is>
+					</is>
+				</is>
+				
+				
+				
+				<is id='btn_escapades' clickableMargin='0' marginLeft='540px' marginTop='0px'>
+					
+					<is>
+						<is id="submenu_off" onmousedown='as:#ascodemenu  onClickMenu  btn_escapade'>
+							<is>
+								<is id='asset_btn_escapades' template='asset_btn_escapades'></is>
+								<is id='asset_overlay_btn_menu_escapade' template='asset_overlay_btn_menu_escapade' blendMode="multiply"></is>
+								<is marginLeft='0px' marginTop='181px' id="sub_btn_escapades">
+									<is>
+										<Text id='text_btn_escapades' marginTop='106px' embedFonts='true' width='447'><![CDATA[]]></Text>
+										<is id='asset_icon_btn_escapades' template='asset_icon_btn_escapades' marginLeft='183px'></is>
+									</is>
+								</is>
+							</is>
+						</is>
+						
+						
+						<is id="submenu_on">
+							<is>
+								<!-- submenu-->
+								<is id='submenu_escapades' marginTop='0px'>
+									
+									<is id='btn_esc_nature' onmousedown='as:#ascodemenu  onClickMenu  esc_nature' clickableMargin='0' marginTop='0px' layoutWidth="447" layoutHeight="171">
+										<is>
+											<is id='asset_btn_esc_nature' template='asset_btn_esc_nature'></is>
+											<is id='asset_overlay_btn_submenu0' template='asset_overlay_btn_submenu' blendMode="multiply"></is>
+											<is marginLeft='0px' marginTop='68px' id="sub_btn_esc_nature">
+												<is>
+													<Text id='text_btn_esc_nature' embedFonts='true' multiline='true' width='447'><![CDATA[]]></Text>
+												</is>
+											</is>
+										</is>
+									</is>
+									
+									<is id='btn_esc_territoire' onmousedown='as:#ascodemenu  onClickMenu  esc_territoire' clickableMargin='0' marginTop='172px' layoutWidth="447" layoutHeight="171">
+										<is>
+											<is id='asset_btn_esc_territoire' template='asset_btn_esc_territoire'></is>
+											<is id='asset_overlay_btn_submenu1' template='asset_overlay_btn_submenu' blendMode="multiply"></is>
+											<is marginLeft='0px' marginTop='68px' id="sub_btn_esc_territoire">
+												<is>
+													<Text id='text_btn_esc_territoire' embedFonts='true' multiline='true' width='447'><![CDATA[]]></Text>
+												</is>
+											</is>
+										</is>
+									</is>
+									
+									<is id='btn_esc_famille' onmousedown='as:#ascodemenu  onClickMenu  esc_famille' clickableMargin='0' marginTop='343px' layoutWidth="447" layoutHeight="171">
+										<is>
+											<is id='asset_btn_esc_famille' template='asset_btn_esc_famille'></is>
+											<is id='asset_overlay_btn_submenu2' template='asset_overlay_btn_submenu' blendMode="multiply"></is>
+											<is marginLeft='0px' marginTop='68px' id="sub_btn_esc_famille">
+												<is>
+													<Text id='text_btn_esc_famille' embedFonts='true' multiline='true' width='447'><![CDATA[]]></Text>
+												</is>
+											</is>
+										</is>
+									</is>
+								</is>
+							</is>
+						</is>
+						
+					</is>
+					
+					
+					
+					
+				</is>
+				
+				<is id='btn_dormir' onmousedown='as:#ascodemenu  onClickMenu  dormir' clickableMargin='0' marginLeft='297px' marginTop='514px'>
+					<is>
+						<is id='asset_btn_territoire' template='asset_btn_territoire'></is>
+						<is marginLeft='111px' marginTop='68px' id="sub_btn_territoire">
+							<is>
+								<Text id='text_btn_dormir' marginTop='106px' embedFonts='true' width='414'><![CDATA[]]></Text>
+								<is id='asset_icon_btn_dormir' template='asset_icon_btn_dormir' marginLeft='168px'></is>
+							</is>
+						</is>
+					</is>
+				</is>
+				
+				<is id='btn_incontournables' onmousedown='as:#ascodemenu  onClickMenu  incontournables' clickableMargin='0' marginTop='0px'>
+					<is>
+						<is id='asset_btn_incontournables' template='asset_btn_incontournables'></is>
+						<is marginLeft='189px' marginTop='180px' id="sub_btn_incontournables">
+							<is>
+								<Text id='text_btn_incontournables' marginTop='106px' embedFonts='true' width='330'><![CDATA[]]></Text>
+								<is id='asset_icon_btn_incontournables' template='asset_icon_btn_incontournables' marginLeft='125px'></is>
+							</is>
+						</is>
+					</is>
+				</is>
+				
+				
+				
+				<!------------------------------------------------------------------>
+				
+				
+				<is id='btn_checkout_new' clickableMargin='0' marginLeft='987px' marginTop='0px'>
+					
+					<is>
+						<is id="submenu2_off" onmousedown='as:#ascodemenu  onClickMenu  btn_checkout'>
+							<is>
+								<is id='asset_btn_checkout' template='asset_btn_checkout'></is>
+								
+								<is marginLeft='0px' marginTop='181px'>
+									<is>
+										<Text id='text_btn_checkout' marginTop='106px' embedFonts='true' width='213'><![CDATA[]]></Text>
+										<is id='asset_icon_btn_checkout' template='asset_icon_btn_checkout' marginLeft='66px'></is>
+									</is>
+								</is>
+							</is>
+						</is>
+				
+						<is id="submenu2_on">
+							<is>
+								<!-- submenu-->
+								<is id='submenu_checkout' marginTop='0px'>
+									
+									<is id='btn_checkout_0' onmousedown='as:#ascodemenu  onClickMenu  checkout_0' clickableMargin='0' marginLeft='0px' marginTop='0px'>
+										<is>
+											<is id='asset_btn_checkout_0' template='asset_btn_restaurer' scaleY="0.75"></is>
+											<is marginTop='41px' id="sub_btn_checkout">
+												<is>
+													<Text id='text_btn_checkout_0' marginTop='-4px' embedFonts='true' marginLeft="20px" width='174'><![CDATA[]]></Text>
+													
+												</is>
+											</is>
+										</is>
+									</is>
+									
+									<is id='btn_checkout_1' onmousedown='as:#ascodemenu  onClickMenu  checkout_1' clickableMargin='0' marginLeft='0px' marginTop="129px" layoutWidth="213" layoutHeight="170">
+										<is>
+											<is id='asset_btn_checkout_1' template='asset_btn_dormir' scaleY="0.75"></is>
+											<is id='asset_overlay_btn_menu_small1' template='asset_overlay_btn_menu_small' blendMode="multiply" scaleY="0.75"></is>
+											<is marginTop='41px' id="sub_btn_dormir">
+												<is>
+													<Text id='text_btn_checkout_1' marginTop='-4px' embedFonts='true' marginLeft="20px" width='174'><![CDATA[]]></Text>
+												</is>
+											</is>
+										</is>
+									</is>
+									
+									<is id='btn_checkout_2' onmousedown='as:#ascodemenu  onClickMenu  checkout_2' clickableMargin='0' marginLeft='-1px' marginTop="257px">
+										<is>
+											<is id='asset_btn_checkout_2' template='asset_btn_restaurer' scaleY="0.75"></is>
+											<is marginTop='41px' id="sub_btn_restaurer">
+												<is>
+													<Text id='text_btn_checkout_2' marginTop='-4px' embedFonts='true' marginLeft="20px" width='174'><![CDATA[]]></Text>
+												</is>
+											</is>
+										</is>
+									</is>
+									<is id='btn_checkout_3' onmousedown='as:#ascodemenu  onClickMenu  checkout_3' clickableMargin='0' marginLeft='-1px' marginTop="385px">
+										<is>
+											<is id='asset_btn_checkout_3' template='asset_btn_dormir' scaleY="0.76"></is>
+											<is id='asset_overlay_btn_menu_small2' template='asset_overlay_btn_menu_small' blendMode="multiply" scaleY="0.76"></is>
+											<is marginTop='41px'>
+												<is>
+													<Text id='text_btn_checkout_3' marginTop='-4px' embedFonts='true' marginLeft="20px" width='174'><![CDATA[TEST SUR 2 LIGNES LIGNES]]></Text>
+												</is>
+											</is>
+										</is>
+									</is>
+								
+								</is>
+							</is>
+						</is>
+					</is>
+				</is>
+				
+				
+				
+				<!---------------------------->
+				
+				<is id='btn_restaurer' onmousedown='as:#ascodemenu  onClickMenu  restaurer' clickableMargin='0' marginLeft='837px' marginTop='515px' layoutWidth="362" layoutHeight="475">
+					<is>
+						<is id='asset_btn_embassadeurs' template='asset_btn_embassadeurs'></is>
+						<is id='asset_overlay_btn_menu_emb' template='asset_overlay_btn_menu_emb' blendMode="multiply"></is>
+						<is marginLeft='0px' marginTop='106px' id="sub_btn_embassadeurs">
+							<is>
+								<Text id='text_btn_restaurer' marginTop='106px' embedFonts='true' width='362'><![CDATA[]]></Text>
+								<is id='asset_icon_btn_restaurer' template='asset_icon_btn_restaurer' marginLeft='144px'></is>
+							</is>
+						</is>
+					</is>
+				</is>
+				
+				
+				
+			</is>
+		
+		
+		</is>
+	
+	</is>
+	
+	
+	
+	
+	
+	
+	
+	
+	<is id="screen_menu2" marginLeft='493px' marginTop='205px'>
+		<is>
+			
+			<is id='diapo_question'>
+				
+				<is id="component_menu2_container" />
+				
+				<is id="menu2_btn_small0" marginTop="-40px" layoutWidth="226" layoutHeight="122" clickableMargin="0" onclick="as:#ascodemenu2  onClickBtnSmall  0" />
+				<is id="menu2_btn_small1" marginTop="-40px" layoutWidth="226" layoutHeight="122" clickableMargin="0" onclick="as:#ascodemenu2  onClickBtnSmall  1" />
+				<is id="menu2_btn_small2" marginTop="-40px" layoutWidth="226" layoutHeight="122" clickableMargin="0" onclick="as:#ascodemenu2  onClickBtnSmall  2" />
+				<is id="menu2_btn_small3" marginTop="-40px" layoutWidth="226" layoutHeight="122" clickableMargin="0" onclick="as:#ascodemenu2  onClickBtnSmall  3" />
+				
+			</is>
+			
+			<is id="btn_valid_menu2_container" marginLeft='-72px' marginTop='533px'>
+				<is id='btn_valid_menu2' onmousedown='as:#ascodemenu2  onClickBtnBig' clickableMargin='0' cm_left="100" cm_bottom="15" cm_right="550" cm_top="430">
+					<Text id='text_btn_valid_menu2' embedFonts='true' width='400' marginLeft="0px"><![CDATA[]]></Text>
+					<is id='asset_btn_valid_menu2' template='asset_btn_valid_menu2' marginLeft='419px' marginTop='-10px'></is>
+				</is>
+			</is>
+		</is>
+	</is>
+	
+	
+	
+	<is id="screen_entermail">
+	
+		<is>
+			
+			<is id="bg_entermail">
+				<is>
+					<is id="asset_overlay_bg_transparent3" template="asset_overlay_bg_transparent" blendMode="multiply" />
+				</is>
+			</is>
+			
+			<is marginLeft='423px' marginTop='288px'>
+			
+				
+				
+				<is id="zone_input_email" marginLeft='0px' marginTop='-102px'>
+					<is id="zone_input_email_sub">
+						<Text id='text_error_mail' embedFonts='true' marginLeft='0px' marginTop='-36px' width="500"><![CDATA[]]></Text>
+						<Text id='text_error_mail_empty' embedFonts='true' marginLeft='0px' marginTop='-36px' width="500"><![CDATA[]]></Text>
+						<Text id='text_help_mail' embedFonts='true' marginLeft='0px' marginTop='-36px' width="500"><![CDATA[]]></Text>
+						<Text id='text_conf_mail' embedFonts='true' marginLeft='0px' marginTop='-36px' width="700"><![CDATA[]]></Text>
+						
+						<is template="asset_bg_input_oneline" />
+						
+						<Text id='text_prefix_inputmail' embedFonts='true' marginLeft="10px" marginTop="6px"><![CDATA[]]></Text>
+						
+						<is id="zone_email_recipients" marginTop="63px" />
+					</is>
+				</is>
+				
+				
+				<is id="btn_send_mail" marginLeft="813px" marginTop="-102px" onmousedown='as:#ascodeentermail  onClickSendMail' clickableMargin='40' cm_top="23">
+				<!-- <is id="btn_send_mail" marginLeft="829px" marginTop="-102px"> -->
+					<is>
+						<is template="asset_btn_send_mail" />
+						<!-- <Text id='text_btn_send_mail' embedFonts='true' width='147' marginTop="174px"><![CDATA[]]></Text> -->
+					</is>
+				</is>
+				
+				
+				<is id="virtual_keyboard" marginLeft='-11px' marginTop='0px' scaleX="0.65" scaleY="0.65">
+					<is>
+						<is id="asset_bg_keyboard" template="asset_bg_keyboard" />
+						<is id="virtual_keyboard_container" marginLeft="36px" marginTop="27px" />
+					</is>
+				</is>
+				
+			
+			</is>
+			
+		</is>
+	</is>
+	
+	
+	
+	<is id="screen_credits">
+		<is>
+			
+			<is id="bg_credits">
+				<is>
+					<is id="asset_overlay_bg_transparent4" template="asset_overlay_bg_transparent" blendMode="multiply" />
+				</is>
+			</is>
+			
+			
+			<is id="content_credits" marginLeft='423px' marginTop='228px'>
+				<is>
+					<Text id='title_credits' embedFonts='true' marginLeft='0px' marginTop='0px' width="800"><![CDATA[]]></Text>
+					<Text id='desc_credits' embedFonts='true' marginLeft='0px' marginTop='80px' width="800"><![CDATA[]]></Text>
+				</is>
+				
+			</is>
+			
+		</is>
+	</is>
+	
+	
+	
+	
+	
+	
+	
+	
+	<is id="screen_home">
+		<is>
+			
+			<is id="bg_home">
+				<is>
+					<is id="bg_home_diapo" />
+					<is id="asset_overlay_bg_transparent" template="asset_overlay_bg_transparent" blendMode="multiply" />
+					<is id="asset_overlay_bg_color" template="asset_overlay_bg_color" blendMode="multiply" />
+				</is>
+			</is>
+			
+			<is id='zone_home' marginLeft='322px' marginTop='370px'>
+				<is>
+					<Text id='text_title_home' embedFonts='true' marginLeft="0px" multiline='true' width='1080'><![CDATA[]]></Text>
+					<Text id='text_subtitle_home' marginLeft='0px' marginTop='236px' embedFonts='true' width='1080'><![CDATA[]]></Text>
+					
+					<is id='home_btn_langs' marginLeft='449px' marginTop='292px'>
+						<is id='btn_home_fr' onmousedown='as:#ascodehome  onClickLang  fr' clickableMargin='6' cm_vert="50" cm_left="50">
+							<Text id='text_btn_home_lang_fr' embedFonts='true' width='50' marginLeft='0px' marginTop='25px'><![CDATA[<span class='MS900_20_FFFFFF'><span style='text-align:center;'>FR</span></span>]]></Text>
+							<is id='asset_btn_home_lang_2_' template='asset_btn_home_lang' marginLeft='0px' marginTop='13px'></is>
+						</is>
+						<is id='btn_home_en' onmousedown='as:#ascodehome  onClickLang  en' clickableMargin='6' cm_vert="50" marginLeft='66px'>
+							<Text id='text_btn_home_lang_en' embedFonts='true' width='50' marginLeft='0px' marginTop='25px'><![CDATA[<span class='MS900_20_FFFFFF'><span style='text-align:center;'>EN</span></span>]]></Text>
+							<is id='asset_btn_home_lang_1_' template='asset_btn_home_lang' marginLeft='0px' marginTop='13px'></is>
+						</is>
+						<is id='btn_home_de' onmousedown='as:#ascodehome  onClickLang  de' clickableMargin='6' cm_vert="50" cm_right="50" marginLeft='133px'>
+							<Text id='text_btn_home_lang_de' embedFonts='true' width='50' marginLeft='0px' marginTop='25px'><![CDATA[<span class='MS900_20_FFFFFF'><span style='text-align:center;'>DE</span></span>]]></Text>
+							<is id='asset_btn_home_lang' template='asset_btn_home_lang' marginLeft='0px' marginTop='13px'></is>
+						</is>
+					</is>
+				</is>
+			</is>
+		
+		</is>
+	</is>
+	
+	
+	
+	
+	
+	
+	<is id="footer_close" marginLeft='460px' marginTop='790px'>
+		<is>
+			
+			<is id="asset_bg_footer" template="asset_bg_footer" />
+			
+			<is id="btn_close_footer" onmousedown='as:#ascodeheader  onClickCloseFooter' clickableMargin='40' marginLeft='354px' marginTop='-22px'>
+				<is template="asset_btn_close_footer" />
+			</is>
+			
+		</is>
+	</is>
+	
+	
+	<is id="footer">
+		<is>
+			<is id='btn_credit' onmousedown='as:#ascodehome  onClickCredits' clickableMargin='25' marginLeft='755px' marginTop='955px'>
+				<is id='asset_copyright' template='asset_copyright'></is>
+			</is>
+			
+			
+			<is id='zone_lang' marginLeft='536px' marginTop='828px'>
+				<is>
+					<is id='btn_lang_fr' onmousedown='as:#ascodehome  onClickLangHeader  fr' clickableMargin='0' cm_horiz="20" cm_left="30" cm_top="20">
+						<Text embedFonts='true' width='80'><![CDATA[<span class='MS900_20_FFFFFF'>FR</span>]]></Text>
+					</is>
+					<is id='btn_lang_en' onmousedown='as:#ascodehome  onClickLangHeader  en' clickableMargin='0' cm_horiz="20" cm_left="30" marginLeft='16px' marginTop='30px'>
+						<Text embedFonts='true' width='80'><![CDATA[<span class='MS900_20_FFFFFF'>EN</span>]]></Text>
+					</is>
+					<is id='btn_lang_de' onmousedown='as:#ascodehome  onClickLangHeader  de' clickableMargin='0' cm_horiz="20" cm_left="30" cm_bottom="20" marginLeft='33px' marginTop='59px'>
+						<Text embedFonts='true' width='80'><![CDATA[<span class='MS900_20_FFFFFF'>DE</span>]]></Text>
+					</is>
+				</is>
+			</is>
+		</is>
+	</is>
+	
+	
+	
+	<is id='btn_menu_container' marginLeft='263px' marginTop='208px'>
+		<is>
+			<is id="btn_menu" onmousedown='as:#ascodescreenmain  onClickMenu' clickableMargin='60'>
+				<Text id='text_btn_menu' marginLeft="-64px" marginTop="12px" embedFonts='true' width='150'><![CDATA[]]></Text>
+				<is id='asset_btn_menu' template='asset_btn_menu' marginLeft='107px' marginTop='0px'></is>
+			</is>
+		</is>
+	</is>
+	
+	
+	<is id="logo_footer" onmousedown='as:#ascodehome  onClickLogoFooter' clickableMargin='15' marginLeft='640px' marginTop='941px'>
+		<is id='asset_logo_footer' template='asset_logo_footer' visible="false"></is>
+	</is>
+	
+	<is id='component_zone_meteo_container' marginLeft='24px' marginTop='26px'>
+		<Component_zone_meteo id='component_zone_meteo'></Component_zone_meteo>
+		
+		<is id="container_like_recap">
+			
+			<Text id='text_like_header' embedFonts='true' marginLeft='354px' marginTop='32px'><![CDATA[]]></Text>
+			
+			<is id="btn_like_recap" marginLeft='324px' marginTop='42px' onmousedown='as:#ascodeheader  onClickBtnLike' clickableMargin='30' cm_right="150">
+				<Icon_like_recap />
+			</is>
+			
+		</is>
+	</is>
+	
+	
+	
+	
+	<is id="content_mail" visible="false">
+		
+		<is id="content_mail_sub">
+			
+			<is id="print_header" template="print_header" />
+			<is id="print_row" template="print_row" marginLeft="778px" marginTop="559px" />
+			
+			<Text id='text_print_header' embedFonts='true' marginLeft='625px' marginTop='93px' multiline="true" width="397"><![CDATA[<span class='print_header'>DÉCOUVREZ<br />LE KOCHERSBERG</span>]]></Text>
+			<Text id='text_print_title' embedFonts='true' marginLeft='622px' marginTop='469px' width="397"><![CDATA[<span class='print_title'>VOTRE PANIER</span>]]></Text>
+			
+			<is id="content_mail_list" marginLeft="117px" marginTop="718px"></is>
+			
+		</is>
+	</is>
+	
+	
+	
+	
+	
+</asxml>

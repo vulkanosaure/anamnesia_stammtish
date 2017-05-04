@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diaporama>
+	<speed>5000</speed>						<!-- uint, en millisecondes -->
+	<speed_fadein>1000</speed_fadein>		<!-- uint, en millisecondes -->
+	<speed_fadeout>1000</speed_fadeout>		<!-- uint, en millisecondes -->
+	<start>0</start>						<!-- si vide => aleatoire -->						<!-- encore defini en flashvars pour l'instant-->
+	<resize>none</resize>					<!-- enum 'none', 'fit', 'border'-->				<!-- encore defini en flashvars pour l'instant-->
+	<item>
+		<text><![CDATA[]]></text>
+		<src>image.jpg</src>		<!--obligatoire-->
+		<left></left>	<!--int-->
+		<top></top>		<!--int-->
+		<time></time>	<!--pour Diaporama seulement-->
+		<movex></movex>	<!--pour Diaporama seulement-->
+		<movey></movey>	<!--pour Diaporama seulement-->
+	</item>
+</diaporama>

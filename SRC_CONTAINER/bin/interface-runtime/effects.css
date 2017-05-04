@@ -1,0 +1,15 @@
+fadeEffect:FadeEffect{
+	time:0.2;
+	
+}
+
+zoomEffect:ZoomEffect{
+	time:0.01;
+	amountpercent_start:1;
+	amountpercent_end:1.0;
+}
+zoomEffect_small:ZoomEffect{
+	time:0.01;
+	amountpercent_start:1;
+	amountpercent_end:1.0;
+}

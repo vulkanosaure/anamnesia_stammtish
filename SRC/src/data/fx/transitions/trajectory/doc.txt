@@ -1,0 +1,14 @@
+- Créer un MovieClip en librairie qui contient un guide de mvt et un clip interpolé le long de ce guide
+- l'exporter pour AS et lui attribuer "data.fx.transitions.trajectory.Trajectory" comme classe de base
+- Créer un movieclip sous-classe de "data.fx.transitions.trajectory.MovieClipTrajectory"
+
+AS : 
+
+var myTrajectory:Trajectory;
+var myMCTrajectory:MovieClipTrajectory;
+
+myTrajectory = new MyTrajectory();
+myMCTrajectory = new MyMCTrajectory();
+addChild(myMCTrajectory);
+myMCTrajectory.trajectory = myTrajectory;
+myMCTrajectory.progress = 0.5;
