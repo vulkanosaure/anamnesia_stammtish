@@ -16,7 +16,7 @@ package data2.asxml
 		}
 		
 		
-		public static function get(_key:String, _objbase:Object = null):Object
+		public static function get(_key:String, _objbase:Object = null, _optional:Boolean = false):Object
 		{
 			if (_cache == null) _cache = new Object();
 			else {
@@ -40,12 +40,12 @@ package data2.asxml
 			{
 				var _subkey:String = _tabkey[i];
 				_base = _base[_subkey];
-				if (_base == null || _base == undefined) throw new Error("node \"" + _subkey + "\" doesn't exist in constantes");
+				if (!_optional && (_base == null || _base == undefined)) throw new Error("node \"" + _subkey + "\" doesn't exist in constantes");
 				
 			}
 			
 			
-			if (_base == null) throw new Error("constante \"" + _key + "\" doesn't exist");
+			if (!_optional && _base == null) throw new Error("constante \"" + _key + "\" doesn't exist");
 			if (_objbase == null) {
 				_cache[_key] = _base;
 			}

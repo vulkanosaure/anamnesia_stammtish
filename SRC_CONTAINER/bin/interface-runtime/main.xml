@@ -164,6 +164,14 @@ Attention : les mardi 1er novembre et vendredi 11 novembre étant fériés, les déc
 			</is>
 			
 			
+			<is id="virtual_keyboard_filter" marginLeft='300px' marginTop='330px' scaleX="0.8" scaleY="0.8">
+				<is>
+					<is id="asset_bg_keyboard_filter" template="asset_bg_keyboard" />
+					<is id="virtual_keyboard_container_filter" marginLeft="36px" marginTop="27px" />
+				</is>
+			</is>
+			
+			
 			
 			
 			<is id="subscreen_detail" marginLeft="449px">

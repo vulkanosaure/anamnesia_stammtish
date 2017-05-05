@@ -4,11 +4,13 @@ package ascode
 	import color.InterfaceColor;
 	import com.adobe.utils.ArrayUtil;
 	import data2.asxml.ASCode;
+	import data2.asxml.Constantes;
 	import data2.asxml.ObjectSearch;
 	import data2.debug.profiler.Profiler;
 	import data2.fx.delay.DelayManager;
 	import data2.navigation.Navigation;
 	import data2.net.imageloader.ImageLoader;
+	import flash.events.KeyboardEvent;
 	import model.ModelArticle;
 	import model.ModelLike;
 	import model.translation.Translation;
@@ -45,9 +47,14 @@ package ascode
 			Navigation.addCallback("subscreen_detail", "subscreen_detail", Navigation.CALLBACK_GOTO, onOpenDetail);
 			Navigation.addCallback("subscreen_detail", "subscreen_detail", Navigation.CALLBACK_QUIT, onQuitDetail);
 			
-			
-			ViewMainScreen.init();
+			ViewMainScreen.handlerKeyboardInput = onKeyboardInput;
+			ViewMainScreen.init(_stage);
 			ViewPrint.init();	
+			
+		}
+		
+		private function onKeyboardInput(e:KeyboardEvent):void 
+		{
 			
 		}
 		
@@ -55,10 +62,13 @@ package ascode
 		
 		public function initActu():void
 		{
-			var _listactu:Array = ModelArticle.getActu();
+			var _nbactu:int = int(Constantes.get("config.nb_actu_right"));
+			trace("_nbactu :" + _nbactu);
+			
+			var _listactu:Array = ModelArticle.getActu(_nbactu);
 			var _nbactu:int = _listactu.length;
 			
-			ViewMainScreen.initActu(_nbactu);
+			ViewMainScreen.initActu(_nbactu, _listactu);
 			
 			
 		}

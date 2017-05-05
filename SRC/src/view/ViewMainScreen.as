@@ -19,10 +19,16 @@ package view
 	import flash.display.BlendMode;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
+	import flash.display.Stage;
 	import flash.text.TextFormat;
 	import model.translation.Translation;
 	import org.qrcode.QRCode;
 	import utils.Animation;
+	import utils.virtualkeyboard.AzertyKeyboardType;
+	import utils.virtualkeyboard.geom.XPoint;
+	import utils.virtualkeyboard.KBKey;
+	import utils.virtualkeyboard.VirtualKeyboard;
+	import utils.virtualkeyboard.VirtualKeyboardEvent;
 	/**
 	 * ...
 	 * @author Vinc
@@ -47,6 +53,7 @@ package view
 		static private var _scrollactu:Scrollbar;
 		static private var _container:Sprite;
 		static private var _containerActu:Sprite;
+		static private var _handlerKeyboardInput:Function;
 		
 		
 		
@@ -56,7 +63,7 @@ package view
 		}
 		
 		
-		static public function init():void 
+		static public function init(_stage:Stage):void 
 		{
 			//content fake
 			var _container:Sprite = getSprite("scroll_main_content");
@@ -71,6 +78,17 @@ package view
 			
 			_scrollactu = getScrollbar("scroll_zone_list_actu");
 			_scrollactu.optimizeFunction = optimizeScrollActu;
+			
+			
+			
+			var _keyboard:VirtualKeyboard = new VirtualKeyboard();
+			_keyboard._stage = _stage;
+			_keyboard.keyboardType = new AzertyKeyboardType(new XPoint(74, 103), 23, 17, KBKey);
+			_keyboard.addEventListener(VirtualKeyboardEvent.INPUT, _handlerKeyboardInput);
+			_keyboard.scaleX = _keyboard.scaleY = 0.8;
+			
+			var _container:Sprite = getSprite("virtual_keyboard_container_filter");
+			_container.addChild(_keyboard);
 			
 		}
 		
@@ -416,7 +434,7 @@ package view
 		
 		
 		
-		static public function initActu(_nb:int):void 
+		static public function initActu(_nb:int, _listactu:Array):void 
 		{
 			trace("ViewMainScreen.initActu");
 			
@@ -425,14 +443,18 @@ package view
 			
 			var _tftitle:TextFormat = new TextFormat("Museo Sans 700", 13, 0xFFFFFF);
 			var _tfdesc:TextFormat = new TextFormat("Museo Sans 300", 13, 0xFFFFFF);
+			var _tfdate:TextFormat = new TextFormat("Museo Sans 700", 15, 0xFFFFFF);
 			
 			
 			for (var i:int = 0; i < _nb; i++) 
 			{
+				var _objdata:Object = _listactu[i];
+				
 				var _item:Asset_component_actu = new Asset_component_actu();
 				_item._index = i;
 				_item.tfttitle = _tftitle;
 				_item.tftdesc = _tfdesc;
+				_item.tftdate = _tfdate;
 				_item.initComponent();
 				
 				
@@ -452,6 +474,10 @@ package view
 				
 				_containerActu.addChild(_item);
 				_item.y = i * 100;
+				
+				var _ts:int = int(_objdata["date"]);
+				_item.setDate(_ts);
+				//trace("_ts : " + _ts);
 				
 				_listActus.push(_item);
 				
@@ -502,6 +528,11 @@ package view
 		
 		
 		static public function get listBGItems():Vector.<Sprite> { return _listBGItems; }	
+		
+		static public function set handlerKeyboardInput(value:Function):void 
+		{
+			_handlerKeyboardInput = value;
+		}
 		
 		
 		

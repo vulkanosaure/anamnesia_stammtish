@@ -54,12 +54,12 @@ package utils.virtualkeyboard {
 		public var _stage:Stage;
 		
 		/** Constructor */
-		public function VirtualKeyboard() {
+		public function VirtualKeyboard(_colorbg:uint= 0x0000FF, _alphabg:Number = 0) {
 			
 			// ---	display list
 			
 			_bg = new Sprite();
-			_bg.graphics.beginFill(0x0000ff, 0);
+			_bg.graphics.beginFill(_colorbg, _alphabg);
 			_bg.graphics.drawRect(0, 0, 10, 10);
 			addChild(_bg);
 			

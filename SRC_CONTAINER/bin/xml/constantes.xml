@@ -10,9 +10,11 @@
 		<delay_anim_home>3.0</delay_anim_home>
 		
 		<time_diapo_territoire>5</time_diapo_territoire>
+		<nb_actu_right>10</nb_actu_right>
 		
 		<!-- le repertoire php/ doit etre un sous-rep de ce dossier, <path_server> + "php/send_email.php -->
-		<path_server>http://appinstrasbourg.com/custom/stamtish/</path_server>
+		<!--<path_server>http://appinstrasbourg.com/custom/stamtish/</path_server>-->
+		<path_server>http://lebeaujardin.alsace/stammtisch/</path_server>
 		
 		
 		

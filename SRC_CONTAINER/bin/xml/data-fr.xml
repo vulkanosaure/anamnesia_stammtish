@@ -140,7 +140,8 @@ PRÉCÉDENTE]]></btn_prev>
 		<rubrics>
 			<actualites>
 				<title><![CDATA[ACTUALITÉS]]></title>
-				<tags>Événements</tags>
+				<node>list_actu</node>
+				<tags>Actualité</tags>
 				<cattype>sous_cat_label</cattype>
 			</actualites>
 			

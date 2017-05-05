@@ -70,6 +70,7 @@ package ascode
 				
 				var _typecat:String;
 				var _listtags:Array = ModelArticle.getTagsByMenuItem(_idscreen);
+				var _nodecontent:String = ModelArticle.getNodeByMenuItem(_idscreen);
 				
 				if (_listtags == 0 || _listtags[0] != "incontournable") {
 					_typecat = ModelArticle.getTypeCatByMenuItem(_idscreen);
@@ -79,9 +80,10 @@ package ascode
 				}
 				
 				trace("_typecat :" + _typecat);
+				trace("_nodecontent :" + _nodecontent);
 				
 				var _ascodeScreenMain:ASCodeScreenMain = ASCodeScreenMain(ObjectSearch.getID("ascodescreenmain"));
-				_ascodeScreenMain.initContent(_listtags, null, false, _idscreen, _typecat);
+				_ascodeScreenMain.initContent(_listtags, null, false, _idscreen, _typecat, "");
 				
 				
 				

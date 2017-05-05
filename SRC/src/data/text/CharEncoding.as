@@ -22,6 +22,29 @@
 			return _str;
 		}
 		
+		public static function stripTags(_str:String):String
+		{
+			var _regexp:RegExp = new RegExp("<[^<]+?>", "gi");
+			return _str.replace(_regexp, "");
+			
+		}
+		
+		public static function entityCodeToSymbol(_str:String):String
+		{
+			_str = _str.replace(/&‌Agrave;/g, "À");
+			_str = _str.replace(/&‌Egrave; /g, "");
+			_str = _str.replace(/a/g, "");
+			_str = _str.replace(/a/g, "");
+			_str = _str.replace(/a/g, "");
+			_str = _str.replace(/a/g, "");
+			_str = _str.replace(/a/g, "");
+			_str = _str.replace(/a/g, "");
+			_str = _str.replace(/a/g, "");
+			_str = _str.replace(/a/g, "");
+			
+			return _str;
+		}
+		
 		
 		
 		
@@ -243,6 +266,18 @@
 			_output = Number(_version);
 			
 			return _output;
+		}
+		
+		static public function nl2br(object:Object):void 
+		{
+			//todo
+			
+		}
+		
+		static public function br2nl(_str:String):String 
+		{
+			_str = _str.replace(/<br ?\/?> ?/g, "\n");
+			return _str;
 		}
 		
 		

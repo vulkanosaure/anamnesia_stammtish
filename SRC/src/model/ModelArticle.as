@@ -1,5 +1,6 @@
 package model 
 {
+	import data.text.CharEncoding;
 	import data2.asxml.Constantes;
 	import data2.math.Math2;
 	/**
@@ -23,23 +24,6 @@ package model
 			var _rawdata:Object = Constantes.get("fr.list_articles.item");
 			var _rawtab:Array = _rawdata as Array;
 			var _len:int = _rawtab.length;
-			
-			/*
-			for (var i:int = 0; i < _len; i++) 
-			{
-				var _data:Object = _rawtab[i];
-				var _tags:String = _data["tags"];
-				var _tabtags:Array = _tags.split(",");
-				
-				for (var j:int = 0; j < _nbtag; j++) 
-				{
-					var _tag:String = _listtags[j];
-					if (_tabtags.indexOf(_tag) != -1) {
-						_output.push(i);
-					}
-				}
-			}
-			*/
 			
 			
 			
@@ -103,6 +87,16 @@ package model
 		}
 		
 		
+		static public function getNodeByMenuItem(_idscreen:String):String 
+		{
+			
+			var _output:String = String(Constantes.get("fr.rubrics." + _idscreen + ".node", null, true));
+			if (_output == null) _output = "list_articles";
+			return _output;
+		}
+		
+		
+		
 		static public function getTypeCatByMenuItem(_idscreen:String):String 
 		{
 			var _output:String = String(Constantes.get("fr.rubrics." + _idscreen + ".cattype"));
@@ -111,7 +105,7 @@ package model
 		
 		
 		
-		static public function getActu():Array 
+		static public function getActu(_max:int):Array 
 		{
 			var _output:Array = new Array();
 			
@@ -121,12 +115,17 @@ package model
 			
 			for (var i:int = 0; i < _len; i++) 
 			{
-				_output.push(_rawtab[i]);
+				var _obj:Object = _rawtab[i];
+				_obj["content"] = CharEncoding.br2nl(_obj["content"]);
+				_obj["content"] = CharEncoding.stripTags(_obj["content"]);
 				
+				_output.push(_obj);
+				if (i >= _max - 1) break;
 			}
 			
 			return _output;
 		}
+		
 		
 		
 	}

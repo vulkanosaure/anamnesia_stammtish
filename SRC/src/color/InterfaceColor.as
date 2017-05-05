@@ -68,6 +68,7 @@ package color
 			
 			//screen enter mail
 			applyColor_single("asset_bg_keyboard", _colorlight);
+			applyColor_single("asset_bg_keyboard_filter", _colorlight);
 			
 			
 		}
