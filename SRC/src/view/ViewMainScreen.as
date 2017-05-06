@@ -4,6 +4,7 @@ package view
 	import assets.Component_detail_img;
 	import assets.Component_item_scroll;
 	import assets.pagination.Component_pagination;
+	import assets.TextInput;
 	import color.InterfaceColor;
 	import data2.asxml.ObjectSearch;
 	import data2.display.scrollbar.Scrollbar;
@@ -21,6 +22,7 @@ package view
 	import flash.display.Sprite;
 	import flash.display.Stage;
 	import flash.text.TextFormat;
+	import flash.ui.Keyboard;
 	import model.translation.Translation;
 	import org.qrcode.QRCode;
 	import utils.Animation;
@@ -53,7 +55,11 @@ package view
 		static private var _scrollactu:Scrollbar;
 		static private var _container:Sprite;
 		static private var _containerActu:Sprite;
+		
 		static private var _handlerKeyboardInput:Function;
+		static private var _handlerSearch:Function;
+		
+		static private var _inputFilter:TextInput;
 		
 		
 		
@@ -81,7 +87,7 @@ package view
 			
 			
 			
-			var _keyboard:VirtualKeyboard = new VirtualKeyboard();
+			var _keyboard:VirtualKeyboard = new VirtualKeyboard("filter");
 			_keyboard._stage = _stage;
 			_keyboard.keyboardType = new AzertyKeyboardType(new XPoint(74, 103), 23, 17, KBKey);
 			_keyboard.addEventListener(VirtualKeyboardEvent.INPUT, _handlerKeyboardInput);
@@ -89,6 +95,14 @@ package view
 			
 			var _container:Sprite = getSprite("virtual_keyboard_container_filter");
 			_container.addChild(_keyboard);
+			
+			
+			var _containerInput:Sprite = getSprite("zone_input_filter_sub");
+			_inputFilter = new TextInput();
+			_inputFilter.x = 10; _inputFilter.y = 12;
+			_inputFilter.width = 509 - _inputFilter.x * 2;
+			_containerInput.addChild(_inputFilter);
+			_inputFilter.mouseEnabled = false;
 			
 		}
 		
@@ -338,6 +352,34 @@ package view
 		
 		
 		
+		static public function applyKeyboardInput(e:VirtualKeyboardEvent):void 
+		{
+			var _text:String = _inputFilter.text;
+			
+			if (e.charCode == Keyboard.BACKSPACE) {
+				_text = _text.substr(0, _text.length - 1);
+			}
+			else	{
+				
+				var _addChar:String;
+				if (e.charCode == Keyboard.ENTER){
+					_handlerSearch();
+					return;
+				}
+				else {
+					_addChar = String.fromCharCode(e.charCode);
+				}
+				
+				_addChar = _addChar.toLowerCase();
+				_text += _addChar;
+				
+			}
+			
+			_inputFilter.text = _text;
+		}
+		
+		
+		
 		
 		static private function lockBtnNavigation():void 
 		{
@@ -514,6 +556,27 @@ package view
 			}
 		}
 		
+		static public function setInputFilterFocus():void 
+		{
+			getSprite("text_help_filter").visible = false;
+		}
+		
+		static public function resetInputFilter():void 
+		{
+			getSprite("text_help_filter").visible = true;
+			_inputFilter.text = "";
+		}
+		
+		static public function getFilterInput():String 
+		{
+			return _inputFilter.text;
+		}
+		
+		static public function setNoResultVisible(boolean:Boolean):void 
+		{
+			getSprite("screen_main_zone_noresult").visible = boolean;
+		}
+		
 		
 		static private function animChangeDetail():void 
 		{
@@ -529,10 +592,9 @@ package view
 		
 		static public function get listBGItems():Vector.<Sprite> { return _listBGItems; }	
 		
-		static public function set handlerKeyboardInput(value:Function):void 
-		{
-			_handlerKeyboardInput = value;
-		}
+		static public function set handlerKeyboardInput(value:Function):void { _handlerKeyboardInput = value; }	
+		
+		static public function set handlerSearch(value:Function):void { _handlerSearch = value; }	
 		
 		
 		

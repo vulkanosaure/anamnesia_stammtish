@@ -120,6 +120,10 @@ VOTRE LISTE]]></btn_print>
 			
 		</share_mail>
 		
+		<filter>
+			<input_filter_help><![CDATA[Entrez une recherche]]></input_filter_help>
+			<no_result><![CDATA[Aucun résultats trouvés]]></no_result>
+		</filter>
 		
 		
 		<screen_main>

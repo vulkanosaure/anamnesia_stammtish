@@ -31,7 +31,7 @@ package view
 		public static function init(_stage:Stage):void
 		{
 			
-			_keyboard = new VirtualKeyboard();
+			_keyboard = new VirtualKeyboard("mail");
 			_keyboard._stage = _stage;
 			_keyboard.keyboardType = new AzertyKeyboardType(new XPoint(74, 103), 23, 17, KBKey);
 			_keyboard.addEventListener(VirtualKeyboardEvent.INPUT, onKeyboardInput);

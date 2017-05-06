@@ -10,11 +10,13 @@ package ascode
 	import data2.fx.delay.DelayManager;
 	import data2.navigation.Navigation;
 	import data2.net.imageloader.ImageLoader;
+	import flash.display.Sprite;
 	import flash.events.KeyboardEvent;
 	import model.ModelArticle;
 	import model.ModelLike;
 	import model.translation.Translation;
 	import utils.Animation;
+	import utils.virtualkeyboard.VirtualKeyboardEvent;
 	import view.ViewGlobal;
 	import view.ViewHeader;
 	import view.ViewMainScreen;
@@ -34,6 +36,8 @@ package ascode
 		private var _listtags:Array;
 		private var _binitactu:Boolean = false;
 		private var _idscreen:String;
+		private var _typecat:String;
+		private var _dirmenu2:String;
 		
 		public function ASCodeScreenMain() 
 		{
@@ -48,15 +52,23 @@ package ascode
 			Navigation.addCallback("subscreen_detail", "subscreen_detail", Navigation.CALLBACK_QUIT, onQuitDetail);
 			
 			ViewMainScreen.handlerKeyboardInput = onKeyboardInput;
+			ViewMainScreen.handlerSearch = onKeyboardEnter;
 			ViewMainScreen.init(_stage);
 			ViewPrint.init();	
 			
 		}
 		
-		private function onKeyboardInput(e:KeyboardEvent):void 
+		private function onKeyboardInput(e:VirtualKeyboardEvent):void 
 		{
-			
+			trace("onKeyboardInput " + e.charCode);
+			ViewMainScreen.applyKeyboardInput(e);
 		}
+		private function onKeyboardEnter():void 
+		{
+			trace("onKeyboardEnter");
+			applySearch();
+		}
+		
 		
 		
 		
@@ -76,24 +88,24 @@ package ascode
 		
 		
 		
-		public function initContent(__listtags:Array, __listindexes:Array = null, __favorite:Boolean = false, __idscreen:String = "", _typecat:String = "", __dirmenu2:String = ""):void
+		
+		
+		public function initContent(__listtags:Array, __listindexes:Array = null, __favorite:Boolean = false, __idscreen:String = "", __typecat:String = "", __dirmenu2:String = "", __search:String = ""):void
 		{
 			trace("initContent : ");
 			
 			
-			Profiler.start("initContent.1");
-			
+			_typecat = __typecat;
 			_favorite = __favorite;
 			_listtags = __listtags;
 			_idscreen = __idscreen;
+			_dirmenu2 = __dirmenu2;
 			trace("_idscreen : " + _idscreen);
 			
-			Profiler.start("initactu", "initContent.1");
 			if (!_binitactu) {
 				initActu();
 				_binitactu = true;
 			}
-			Profiler.end("initactu", "initContent.1");
 			
 			
 			//if (DataGlobal.DEBUG_MODE) _favorite = true;
@@ -114,46 +126,39 @@ package ascode
 			ViewGlobal.setVisible("btn_goto_mail", _favorite);
 			ViewGlobal.setVisible("btn_print", _favorite);
 			
-			
 			ViewGlobal.setVisible("text_subtitle", true);
 			
-			
-			Profiler.start("ModelArticle.getIndexesByTags", "initContent.1");
 			
 			if (_listtags != null) _listindexes = ModelArticle.getIndexesByTags(_listtags, _typecat);
 			else _listindexes = __listindexes;
 			
-			Profiler.end("ModelArticle.getIndexesByTags", "initContent.1");
+			
+			if (__search != "") {
+				_listindexes = ModelArticle.getFilteredIndexes(_listindexes, __search);
+			}
 			
 			trace("_listindexes : " + _listindexes);
+			
+			if (_listindexes.length == 0) {
+				ViewMainScreen.setNoResultVisible(true);
+			}
+			else {
+				ViewMainScreen.setNoResultVisible(false);
+			}
 			
 			var _nbarticle:int = _listindexes.length;
 			
 			
-			Profiler.start("ViewMainScreen.initItems", "initContent.1");
-			
 			ViewMainScreen.initItems(_nbarticle, _favorite);
-			
-			Profiler.end("ViewMainScreen.initItems", "initContent.1");
-			
-			
-			Profiler.start("InterfaceColor", "initContent.1");
 			
 			InterfaceColor.applyColor(DataGlobal.save_colors);
 			InterfaceColor.applyColor_tab(DataGlobal.save_colors, ViewMainScreen.listBGItems);
 			
-			Profiler.end("InterfaceColor", "initContent.1");
 			
-			Profiler.end("initContent.1");
-			
-			
-			Profiler.start("ModelArticle.getArticleByIndexes");
 			var _listArticle:Array = ModelArticle.getArticleByIndexes(_listindexes);
 			_listdata = _listArticle;
-			Profiler.end("ModelArticle.getArticleByIndexes");
 			
 			//trace("_listArticle : " + _listArticle);
-			
 			
 			
 			var _dir:String = (!_favorite) ? _idscreen : "favourite";
@@ -162,9 +167,6 @@ package ascode
 			trace("_dir2 : " + _dir);
 			
 			
-			
-			
-			Profiler.start("_componentimg");
 			if (_dir != "") {
 				var _componentimg:Component_detail_img = Component_detail_img(ObjectSearch.getID("component_detail_img"));
 				_componentimg.group = "";
@@ -172,9 +174,6 @@ package ascode
 				_componentimg.urlimg = "images/detail/" + _dir + "/img-detail-header.png";
 				_componentimg.updateComponent();
 			}
-			Profiler.end("_componentimg");
-			
-			
 			
 			
 			Profiler.start("translation");
@@ -191,40 +190,28 @@ package ascode
 				Translation.setDynamicIndex(_id, _listindexes[i]);
 				_filters.push(_id);
 				
-				/*
-				_id = "text_itemscroll_desc" + i;
-				Translation.addDynamic(_id, "list_articles.item", "city", _id, "MS500_15_FFFFFF", "");
-				Translation.setDynamicIndex(_id, _listindexes[i]);
-				_filters.push(_id);
-				*/
-				
 				ViewMainScreen.setDataScrollItem(i, _data);
 				
 			}
 			Profiler.end("translation");
 			
 			
-			Profiler.start("initContent.end");
-			
 			Translation.setContentVariable("nbrep", String(_nbarticle));
 			_filters.push("text_subtitle");
 			
-			
-			Profiler.start("ImageLoader", "initContent.end");
 			ImageLoader.loadGroup();
 			
-			Profiler.end("ImageLoader", "initContent.end");
-			
-			
-			Profiler.start("Translation", "initContent.end");
 			trace("perftest");
 			Translation.translate("", _filters);
-			Profiler.end("Translation", "initContent.end");
 			
-			Profiler.end("initContent.end");
 			
 			trace(Profiler.getBilan());
 			Profiler.reset();
+			
+			
+			if (__search == "") {
+				ViewMainScreen.resetInputFilter();
+			}
 			
 		}
 		
@@ -246,6 +233,65 @@ package ascode
 			
 		}
 		
+		public function onClickSearch(_type:String):void
+		{
+			var _open:Boolean = (Navigation.getCurscreen("virtual_keyboard_filter") != "");
+			if (!_open) {
+				openKeyboardFilter();
+			}
+			else {
+				if (_type == "btn") {
+					applySearch();
+				}
+			}
+		}
+		
+		
+		private function openKeyboardFilter():void 
+		{
+			Navigation.gotoScreen("virtual_keyboard_filter", "virtual_keyboard_filter", 300);
+			ViewMainScreen.setInputFilterFocus();
+		}
+		
+		private function closeKeyboardFilter(_resetfield:Boolean):void 
+		{
+			Navigation.gotoScreen("virtual_keyboard_filter", "");
+			if (_resetfield) ViewMainScreen.resetInputFilter();
+		}
+		
+		
+		private function applySearch():void 
+		{
+			var _search:String = ViewMainScreen.getFilterInput();
+			if (_search != "") {
+				trace("applySearch : " + _search);
+				
+				initContentFilter(_search);
+				
+			}
+			closeKeyboardFilter(false);
+		}
+		
+		private function initContentFilter(_filter:String):void
+		{
+			initContent(_listtags, null, false, _idscreen, _typecat, _dirmenu2, _filter);
+		}
+		
+		
+		
+		public function onClickResetFilter():void
+		{
+			ViewMainScreen.setNoResultVisible(false);
+			DelayManager.add("", 200, function():void{
+				initContentFilter("");
+			});
+		}
+		
+		
+		public function onClickCloseKeyboard():void
+		{
+			closeKeyboardFilter(true);
+		}
 		
 		
 		private function onQuitDetail():void 
@@ -305,6 +351,10 @@ package ascode
 		public function onClickMenu():void
 		{
 			trace("ASCodeScreenMain.onClickMenu");
+			if (Navigation.getCurscreen("virtual_keyboard_filter") != "") {
+				closeKeyboardFilter(true);
+			}
+			
 			Navigation.gotoScreen("", "screen_menu");
 		}
 		

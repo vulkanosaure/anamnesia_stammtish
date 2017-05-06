@@ -1,5 +1,6 @@
 package
 {
+	import assets.ContainerFilter;
 	import lol;
 	import ascode.ASCodeEmbassadeur;
 	import ascode.ASCodeEntermail;
@@ -247,6 +248,7 @@ package
 			ASXML.registerClass(Component_item_scroll);
 			ASXML.registerClass(Component_pagination);
 			ASXML.registerClass(Component_detail_img);
+			ASXML.registerClass(ContainerFilter);
 			
 			//ascode
 			ASXML.registerClass(ASCodeMain);

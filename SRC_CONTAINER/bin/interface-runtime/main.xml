@@ -60,6 +60,26 @@
 					
 					<Text id='text_subtitle' marginLeft='226px' marginTop='75px' embedFonts='true' width='500'><![CDATA[]]></Text>
 					
+					
+					<!-- field search -->
+					<is marginLeft="156px" marginTop='76px'>
+						<is id="zone_input_filter">
+							<is id="zone_input_filter_sub">
+								
+								<Text id='text_help_filter' embedFonts='true' marginLeft='15px' marginTop='14px' width="480"><![CDATA[]]></Text>
+								<is template="asset_bg_input_oneline_filter" />
+								<is clickableMargin="18" layoutWidth="460" layoutHeight="50" marginTop="0px" marginLeft="0px" onmousedown="as:#ascodescreenmain  onClickSearch  input" />
+							</is>
+						</is>
+						
+						<is id="btn_filter" marginLeft="527px" onmousedown='as:#ascodescreenmain  onClickSearch  btn' clickableMargin='40' cm_top="23">
+							<is>
+								<is template="asset_btn_send_mail" />
+							</is>
+						</is>
+					</is>
+					
+					
 					<is id="screen_main_zone_scroll" marginLeft='150px' marginTop='139px'>
 						<is>
 							<Scrollbar id="scroll_main" touchMode="true" template="ScrollbarSkin" width="644" height="420" arrow="false" always_visible="true" handleAutoSize="false">
@@ -83,6 +103,14 @@
 							</is>
 							
 						</is>
+					</is>
+					
+					<is id="screen_main_zone_noresult" marginLeft="204px" marginTop="180px">
+						<Text id='text_zone_noresult' embedFonts='true' width='400' multiline="true"><![CDATA[]]></Text>
+						<is id="btn_back_filter" marginLeft="180px" marginTop="44px" onmousedown='as:#ascodescreenmain  onClickResetFilter' clickableMargin='40' cm_top="23">
+							<is><is template="asset_btn_send_mail" /></is>
+						</is>
+						
 					</is>
 					
 					
@@ -164,10 +192,14 @@ Attention : les mardi 1er novembre et vendredi 11 novembre étant fériés, les déc
 			</is>
 			
 			
-			<is id="virtual_keyboard_filter" marginLeft='300px' marginTop='330px' scaleX="0.8" scaleY="0.8">
-				<is>
-					<is id="asset_bg_keyboard_filter" template="asset_bg_keyboard" />
-					<is id="virtual_keyboard_container_filter" marginLeft="36px" marginTop="27px" />
+			<is id="virtual_keyboard_filter" marginLeft='380px' marginTop='328px' scaleX="0.8" scaleY="0.8">
+				<is id="virtual_keyboard_filter_sub">
+					<ContainerFilter scaleX="1.7" scaleY="2.2" marginLeft="-280px">
+						<is id="asset_bg_keyboard_filter" template="asset_bg_keyboard" />
+					</ContainerFilter>
+					<is id="virtual_keyboard_container_filter" marginLeft="72px" marginTop="57px" />
+					
+					<is layoutWidth="2000" layoutHeight="400" marginTop="-484px" marginLeft="-500px" onmousedown="as:#ascodescreenmain  onClickCloseKeyboard" />
 				</is>
 			</is>
 			

@@ -1,5 +1,6 @@
 package model 
 {
+	import adobe.utils.CustomActions;
 	import data.text.CharEncoding;
 	import data2.asxml.Constantes;
 	import data2.math.Math2;
@@ -16,6 +17,35 @@ package model
 		}
 		
 		
+		
+		
+		static public function getFilteredIndexes(_listindexes:Array, _search:String):Array 
+		{
+			var _output:Array = new Array();
+			
+			var _regexp:RegExp = new RegExp(_search, "i");
+			
+			
+			var _rawtab:Array = getArticleByIndexes(_listindexes);
+			var _len:int = _rawtab.length;
+			
+			for (var i:int = 0; i < _len; i++) 
+			{
+				var _data:Object = _rawtab[i];
+				var _index:int = _listindexes[i];
+				
+				var _title:String = _data.title;
+				var _content:String = _data.content;
+				
+				if (_title.match(_regexp)) _output.push(_index);
+				else if (_content.match(_regexp)) _output.push(_index);
+				
+			}
+			
+			return _output;
+		}
+		
+		
 		public static function getIndexesByTags(_listtags:Array, _typecat:String):Array
 		{
 			var _output:Array = new Array();
@@ -26,7 +56,7 @@ package model
 			var _len:int = _rawtab.length;
 			
 			
-			
+			var _idlisted:Array = [];
 			
 			//raccourci pour 1 seul tag (performances)
 			var _tagrubric:String = _listtags[0];
@@ -38,7 +68,12 @@ package model
 				var _data:Object = _rawtab[i];
 				
 				if (_isIncontournable) {
-					if (_data["focus"] == "1") _output.push(i);
+					if (_data["focus"] == "1") {
+						if (_idlisted.indexOf(_data.id) == -1) {
+							_output.push(i);
+							_idlisted.push(_data.id);
+						}
+					}
 				}
 				else {
 					var _tag:String = _data[_typecat];
@@ -46,7 +81,10 @@ package model
 					//if (Math2.getRandProbability(0.01)) trace("- _tag : " + _tag);
 					
 					if (_tag == _tagrubric) {
-						_output.push(i);
+						if (_idlisted.indexOf(_data.id) == -1) {
+							_output.push(i);
+							_idlisted.push(_data.id);
+						}
 					}
 				}
 				
@@ -125,6 +163,10 @@ package model
 			
 			return _output;
 		}
+		
+		
+		
+		
 		
 		
 		

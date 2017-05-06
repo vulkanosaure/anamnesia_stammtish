@@ -143,6 +143,19 @@ package ascode
 			
 			
 			
+			
+			//keyboard filter
+			_dist = 1100;
+			Navigation.addScreen("virtual_keyboard_filter", "virtual_keyboard_filter", [
+				new NavigationDef("virtual_keyboard_filter", NavigationDef.DOWN, 0.2, _dist, false, 0.25),
+			],
+			[
+				new NavigationDef("virtual_keyboard_filter", NavigationDef.DOWN, 0.2, _dist, false, 0.15),
+			]);
+			Navigation.init("virtual_keyboard_filter", "", _stage);
+			
+			
+			
 			var _side:String = NavigationDef.LEFT;
 			var _time:Number = 0.18;
 			var _time2:Number = 0.12;
@@ -387,6 +400,10 @@ package ascode
 			Translation.add("text_conf_mail", "share_mail.popup_desc", "help_mail", "");
 			Translation.add("text_btn_goto_mail", "share_mail.btn_send", "MS900_15_FFFFFF", "text-align:right;");
 			Translation.add("text_btn_print", "share_mail.btn_print", "MS900_15_FFFFFF", "text-align:right;");
+			
+			//filter
+			Translation.add("text_help_filter", "filter.input_filter_help", "help_mail", "");
+			Translation.add("text_zone_noresult", "filter.no_result", "noresultfilter", "");
 			
 			
 			//credits

@@ -26,11 +26,12 @@ package utils.virtualkeyboard {
 		//	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		
 		private static var _Instance:VirtualKeyboard;
+		private var _type:String;
 		
 		/** Returns VirtualKeyboard singleton */
 		public static function get $():VirtualKeyboard {
 			if(!_Instance)
-				_Instance = new VirtualKeyboard();
+				_Instance = new VirtualKeyboard("");
 			return _Instance;
 		}
 		
@@ -54,12 +55,13 @@ package utils.virtualkeyboard {
 		public var _stage:Stage;
 		
 		/** Constructor */
-		public function VirtualKeyboard(_colorbg:uint= 0x0000FF, _alphabg:Number = 0) {
+		public function VirtualKeyboard(__type:String) {
 			
 			// ---	display list
+			_type = __type;
 			
 			_bg = new Sprite();
-			_bg.graphics.beginFill(_colorbg, _alphabg);
+			_bg.graphics.beginFill(0x0000FF, 0);
 			_bg.graphics.drawRect(0, 0, 10, 10);
 			addChild(_bg);
 			
@@ -173,7 +175,7 @@ package utils.virtualkeyboard {
 			if (_keyboardType) {
 				//Global.stage.addEventListener(KeyboardEvent.KEY_DOWN, _onRealKeyHandler);
 			
-				keys = _keyboardType.keysDeclaration();
+				keys = _keyboardType.keysDeclaration(_type);
 				for each(key in keys) {
 					(key as EventDispatcher).addEventListener(MouseEvent.CLICK, _onVirtualKeyHandler);
 					

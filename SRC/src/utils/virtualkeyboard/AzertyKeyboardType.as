@@ -57,7 +57,7 @@ package utils.virtualkeyboard {
 		}
 		
 		/** @inheritDoc */
-		public function keysDeclaration():Vector.<IKeyView>{
+		public function keysDeclaration(_type:String):Vector.<IKeyView>{
 			var keys:Vector.<IKeyView>;
 			var key:IKeyView;
 			
@@ -218,10 +218,20 @@ package utils.virtualkeyboard {
 			inGridOther(6, 2, WIDTH_MEDIUM2, 103).apply(key);
 			keys.push(key);
 			*/
-			key = new KBKey(new kb_icon_delete());
-			key.reset(Keyboard.BACKSPACE, false, true, true);
-			inGridOther(7, 2, 268, 103).apply(key);
-			keys.push(key);
+			
+			if (_type == "mail") {
+				key = new KBKey(new kb_icon_delete());
+				key.reset(Keyboard.BACKSPACE, false, true, true);
+				inGridOther(7, 2, 268, 103).apply(key);
+				keys.push(key);
+			}
+			else if (_type == "filter") {
+				key = new KBKey(new kb_icon_enter());
+				key.reset(Keyboard.ENTER, false, true, true);
+				inGridOther(7, 2, 268, 103).apply(key);
+				keys.push(key);
+			}
+			
 			/*
 			key = new KBKey(new kb_icon_enter());
 			key.reset(Keyboard.ENTER, false, true, true);
@@ -235,53 +245,72 @@ package utils.virtualkeyboard {
 			//	---------------------------- NUMBER THIRD LINE
 			var _basey:Number = 0.07;
 			
-			key = new _keyClass;
-			KBKey(key).fontsize = 44;
-			key.reset(-3, false, true, true, String(".com"));
-			//inGridExat(926, -111, 130, 48).apply(key);
-			inGridOther(0, 3 + _basey, WIDTH_MEDIUM, HEIGHT_SMALL).apply(key);
-			keys.push(key);
+			if (_type == "mail") {
+				key = new _keyClass;
+				KBKey(key).fontsize = 44;
+				key.reset(-3, false, true, true, String(".com"));
+				//inGridExat(926, -111, 130, 48).apply(key);
+				inGridOther(0, 3 + _basey, WIDTH_MEDIUM, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+				
+				key = new _keyClass;
+				KBKey(key).fontsize = 44;
+				key.reset(-2, false, true, true, String(".fr"));
+				//inGridExat(926, -111, 130, 48).apply(key);
+				inGridOther(1.5, 3 + _basey, WIDTH_MEDIUM, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+				
+				key = new _keyClass;
+				KBKey(key).fontsize = 46;
+				key.reset(String('@').charCodeAt(), true, false, true);
+				inGridOther(3, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+				
+				key = new _keyClass(null);
+				key.reset(Keyboard.SPACE, false, true, true);
+				inGridOther(4, 3 + _basey, WIDTH_SPACE, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+			}
+			
+			else if (_type == "filter") {
+				key = new _keyClass(null);
+				key.reset(Keyboard.SPACE, false, true, true);
+				inGridOther(1, 3 + _basey, WIDTH_SPACE * 2 + 19, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+			}
 			
 			
 			
-			key = new _keyClass;
-			KBKey(key).fontsize = 44;
-			key.reset(-2, false, true, true, String(".fr"));
-			//inGridExat(926, -111, 130, 48).apply(key);
-			inGridOther(1.5, 3 + _basey, WIDTH_MEDIUM, HEIGHT_SMALL).apply(key);
-			keys.push(key);
 			
 			
-			key = new _keyClass;
-			KBKey(key).fontsize = 46;
-			key.reset(String('@').charCodeAt(), true, false, true);
-			inGridOther(3, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
-			keys.push(key);
+			if (_type == "mail") {
+				key = new _keyClass;
+				key.reset(String('.').charCodeAt(), true, false, true);
+				inGridOther(7, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+				
+				key = new _keyClass;
+				key.reset(String('_').charCodeAt(), true, false, true);
+				inGridOther(8, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+				
+				key = new _keyClass;
+				key.reset(String('-').charCodeAt(), true, false, true);
+				inGridOther(9, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+				
+			}
+			else if (_type == "filter") {
+				key = new KBKey(new kb_icon_delete());
+				key.reset(Keyboard.BACKSPACE, false, true, true);
+				inGridOther(7, 3 + _basey, 268, HEIGHT_SMALL).apply(key);
+				keys.push(key);
+			}
 			
 			
 			
-			key = new _keyClass(null);
-			key.reset(Keyboard.SPACE, false, true, true);
-			inGridOther(4, 3 + _basey, WIDTH_SPACE, HEIGHT_SMALL).apply(key);
-			keys.push(key);
 			
 			
-			
-			key = new _keyClass;
-			key.reset(String('.').charCodeAt(), true, false, true);
-			inGridOther(7, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
-			keys.push(key);
-			
-			key = new _keyClass;
-			key.reset(String('_').charCodeAt(), true, false, true);
-			inGridOther(8, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
-			keys.push(key);
-			
-			key = new _keyClass;
-			key.reset(String('-').charCodeAt(), true, false, true);
-			
-			inGridOther(9, 3 + _basey, WIDTH_BASE, HEIGHT_SMALL).apply(key);
-			keys.push(key);
 			
 			
 			
