@@ -155,7 +155,7 @@ package view
 		
 		
 		
-		static public function initItems(_len:int, _favourite:Boolean):void 
+		static public function initItems(_len:int, _favourite:Boolean, _listdata:Array, _idscreen:String):void 
 		{
 			_container = getSprite("scroll_main_content");
 			var _nbitem:int = _listItems.length;
@@ -176,8 +176,8 @@ package view
 					_item.index = i;
 					_item.group = "";
 					_item.tfttitle = _tfttitle;
-					
 					_item.tftdesc = _tftdesc;
+					
 					
 					_item.initComponent();
 					_listItems.push(_item);
@@ -199,6 +199,12 @@ package view
 				
 				_item.y = i * INTERLINE_ITEMS;
 				_item.setBtnDeleteVisible(_favourite);
+				
+				if (_idscreen == "actualites") {
+					var _obj:Object = _listdata[i];
+					_item.ts = _obj.date;
+				}
+				
 				
 			}
 			

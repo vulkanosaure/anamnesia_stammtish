@@ -21,6 +21,7 @@ package assets
 		private var _bg:Sprite;
 		private var _tfttitle:TextFormat;
 		private var _tftdesc:TextFormat;
+		private var _ts:int;
 		
 		public function Component_item_scroll()
 		{
@@ -55,7 +56,10 @@ package assets
 			_text2.x = 77; _text2.y = 38; 
 			_text2.width = 460;
 			_text2.embedFonts = true;
+			_text2.textformat = _tftdesc;
 			ObjectSearch.registerID(_text2, "text_itemscroll_desc" + _index, false);
+			
+			
 			
 			
 			
@@ -134,6 +138,25 @@ package assets
 		}
 		*/
 		
+		
+		private function formatDate(_ts:int):String
+		{
+			var _date:Date = new Date(_ts * 1000);
+			//_date.setTime((_ts) * 1000);
+			
+			var _strday:String = String(_date.getDate());
+			if (_strday.length < 2) _strday = "0" + _strday;
+			
+			var _strmon:String = String(_date.getMonth() + 1);
+			if (_strmon.length < 2) _strmon = "0" + _strmon;
+			
+			var _stryear:String = String(_date.getFullYear());
+			
+			var _strdate:String = _strday + "/" + _strmon + "/" + _stryear;
+			
+			return _strdate;
+		}
+		
 		public function setBtnDeleteVisible(_value:Boolean):void
 		{
 			_btndelete.visible = _value;
@@ -151,6 +174,19 @@ package assets
 		public function get tftdesc():TextFormat { return _tftdesc; }	
 		
 		public function set tftdesc(value:TextFormat):void { _tftdesc = value; }	
+		
+		public function set ts(value:int):void 
+		{ 
+			_ts = value; 
+			if (_ts != 0) {
+				_text2.value = formatDate(_ts);
+				_text2.updateText();
+				_text2.visible = true;
+			}
+			else {
+				_text2.visible = false;
+			}
+		}
 		
 		
 	}

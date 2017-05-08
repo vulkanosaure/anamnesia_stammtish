@@ -74,7 +74,7 @@
 						
 						<is id="btn_filter" marginLeft="527px" onmousedown='as:#ascodescreenmain  onClickSearch  btn' clickableMargin='40' cm_top="23">
 							<is>
-								<is template="asset_btn_send_mail" />
+								<is template="asset_btn_search" />
 							</is>
 						</is>
 					</is>
@@ -108,7 +108,7 @@
 					<is id="screen_main_zone_noresult" marginLeft="204px" marginTop="180px">
 						<Text id='text_zone_noresult' embedFonts='true' width='400' multiline="true"><![CDATA[]]></Text>
 						<is id="btn_back_filter" marginLeft="180px" marginTop="44px" onmousedown='as:#ascodescreenmain  onClickResetFilter' clickableMargin='40' cm_top="23">
-							<is><is template="asset_btn_send_mail" /></is>
+							<is><is template="asset_btn_back" /></is>
 						</is>
 						
 					</is>

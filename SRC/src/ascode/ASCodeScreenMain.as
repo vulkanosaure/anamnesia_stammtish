@@ -149,14 +149,16 @@ package ascode
 			var _nbarticle:int = _listindexes.length;
 			
 			
-			ViewMainScreen.initItems(_nbarticle, _favorite);
+			var _listArticle:Array = ModelArticle.getArticleByIndexes(_listindexes);
+			_listdata = _listArticle;
+			
+			
+			ViewMainScreen.initItems(_nbarticle, _favorite, _listdata, _idscreen);
 			
 			InterfaceColor.applyColor(DataGlobal.save_colors);
 			InterfaceColor.applyColor_tab(DataGlobal.save_colors, ViewMainScreen.listBGItems);
 			
 			
-			var _listArticle:Array = ModelArticle.getArticleByIndexes(_listindexes);
-			_listdata = _listArticle;
 			
 			//trace("_listArticle : " + _listArticle);
 			
