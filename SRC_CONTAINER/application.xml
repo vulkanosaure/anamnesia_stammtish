@@ -11,7 +11,7 @@
 	
 	
 	  <!-- prod-->
-	  <!--
+	  
 	  <initialWindow>
 		<title>STAMMTISCH_CONTAINER</title> 
 		<content>STAMMTISCHCONTAINER.swf</content> 
@@ -25,11 +25,11 @@
 		<x>0</x>
 		<y>0</y>
 	  </initialWindow>
-	  -->
+	  
 	  
 	  
 	  <!-- debug-->
-	  
+	  <!--
 	  <initialWindow>
 		<title>STAMMTISCH_CONTAINER</title> 
 		<content>STAMMTISCHCONTAINER.swf</content> 
@@ -39,7 +39,7 @@
 		<width>1440</width><height>810</height>
 		<x>0</x><y>0</y>
 	  </initialWindow>
-	  
+	  -->
 	
 	<!--  
 	More options:

@@ -128,8 +128,9 @@ package ascode
 			
 			ViewGlobal.setVisible("text_subtitle", true);
 			
+			var _afternow:Boolean = (_idscreen == "actualites");
 			
-			if (_listtags != null) _listindexes = ModelArticle.getIndexesByTags(_listtags, _typecat);
+			if (_listtags != null) _listindexes = ModelArticle.getIndexesByTags(_listtags, _typecat, _afternow);
 			else _listindexes = __listindexes;
 			
 			
@@ -139,12 +140,19 @@ package ascode
 			
 			trace("_listindexes : " + _listindexes);
 			
-			if (_listindexes.length == 0) {
+			if (__search != "") {
 				ViewMainScreen.setNoResultVisible(true);
+				
+				var _heightresult:Number = _listindexes.length * ViewMainScreen.INTERLINE_ITEMS;
+				if (_heightresult > 420) _heightresult = 420;
+				
+				var _y:Number = _heightresult + 180;
+				ViewMainScreen.setNoResultY(_y);
 			}
 			else {
 				ViewMainScreen.setNoResultVisible(false);
 			}
+			
 			
 			var _nbarticle:int = _listindexes.length;
 			
@@ -153,7 +161,16 @@ package ascode
 			_listdata = _listArticle;
 			
 			
-			ViewMainScreen.initItems(_nbarticle, _favorite, _listdata, _idscreen);
+			
+			if (_idscreen == "actualites") {
+				//todo
+				_listdata.sortOn("date");
+				
+				
+			}
+			
+			
+			ViewMainScreen.initItems(_nbarticle, _favorite, _listdata, _idscreen, _listtags);
 			
 			InterfaceColor.applyColor(DataGlobal.save_colors);
 			InterfaceColor.applyColor_tab(DataGlobal.save_colors, ViewMainScreen.listBGItems);
@@ -171,10 +188,12 @@ package ascode
 			
 			if (_dir != "") {
 				var _componentimg:Component_detail_img = Component_detail_img(ObjectSearch.getID("component_detail_img"));
-				_componentimg.group = "";
+				_componentimg.debug = true;
+				_componentimg.group = "detailimg";
 				//_componentimg.urlimg = "images/detail/" + _dir + "/img-detail-header" + _indeximg + ".png";
 				_componentimg.urlimg = "images/detail/" + _dir + "/img-detail-header.png";
 				_componentimg.updateComponent();
+				ImageLoader.loadGroup("detailimg");
 			}
 			
 			

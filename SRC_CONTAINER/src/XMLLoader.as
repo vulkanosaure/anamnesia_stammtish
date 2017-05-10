@@ -39,7 +39,7 @@ package
 			trace("onComplete");
 			trace(_urlloader.data);
 			
-			//CacheManager.writeFile("xml/dynamic-data-" + _curlang + ".xml", _urlloader.data, false);
+			CacheManager.writeFile("xml/dynamic-data-" + _curlang + ".xml", _urlloader.data, false);
 			_handler();
 			
 		}

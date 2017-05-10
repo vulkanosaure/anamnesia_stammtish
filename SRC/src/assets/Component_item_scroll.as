@@ -123,6 +123,9 @@ package assets
 			_bmp.width = _bmp.height = 62;
 		}
 		
+		
+		
+		
 		/*
 		public function setContent(_title:String, _subtitle:String, _address:String):void 
 		{
@@ -186,6 +189,11 @@ package assets
 			else {
 				_text2.visible = false;
 			}
+		}
+		
+		public function resetTS():void
+		{
+			_text2.visible = false;
 		}
 		
 		

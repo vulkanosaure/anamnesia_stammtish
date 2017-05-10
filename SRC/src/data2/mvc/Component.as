@@ -20,6 +20,7 @@ package data2.mvc
 		private var _bmpd:BitmapData;
 		protected var _bmp:Bitmap;
 		protected var _group:String = "";
+		public var debug:Boolean = false;
 		
 		
 		public function Component() 
@@ -40,16 +41,23 @@ package data2.mvc
 			if (_loader == null) throw new Error("initComponent has not been called");
 			var _img:DisplayObject = ImageLoader.getImage(_urlimg, _group);
 			
+			if (debug) {
+				trace("updateComponent " + _img + ", " + _urlimg + ", " + _group);
+			}
+			_bmp.visible = false;
+			
 			if (_img != null) {
 				
-				var _bmp:Bitmap = Bitmap(_img);
-				_bmpd = _bmp.bitmapData;
+				var _bmp2:Bitmap = Bitmap(_img);
+				_bmpd = _bmp2.bitmapData;
 				updateImg();
 			}
 			else {
 				ImageLoader.add(_loader, _urlimg, _group);
 			}
 		}
+		
+		
 		
 		public function resetComponent():void
 		{
@@ -67,7 +75,10 @@ package data2.mvc
 				_bmpd.dispose();
 			}
 			*/
+			
 			_bmpd = (_loader.content as Bitmap).bitmapData;
+			if (debug) trace("onloadercomplete " + _bmpd);
+			
 			
 			//trace("onLoaderComplete " + _bmpd);
 			updateImg();
@@ -76,6 +87,7 @@ package data2.mvc
 		protected function updateImg():void 
 		{
 			_bmp.bitmapData = _bmpd;
+			_bmp.visible = true;
 		}
 		
 		

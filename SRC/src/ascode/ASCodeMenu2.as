@@ -94,6 +94,8 @@ package ascode
 			Translation.setDynamicIndex("text_title", _indexxml);
 			Translation.translate("", ["text_title"]);
 			
+			ViewMainScreen.layoutTitles();
+			
 			
 			var _ascodeScreenMain:ASCodeScreenMain = ASCodeScreenMain(ObjectSearch.getID("ascodescreenmain"));
 			_ascodeScreenMain.initContent(_listtags, null, false, "", _obj.cattype, _obj.img_bg);

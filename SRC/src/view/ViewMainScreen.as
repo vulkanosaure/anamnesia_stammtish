@@ -155,8 +155,10 @@ package view
 		
 		
 		
-		static public function initItems(_len:int, _favourite:Boolean, _listdata:Array, _idscreen:String):void 
+		static public function initItems(_len:int, _favourite:Boolean, _listdata:Array, _idscreen:String, _listtags:Array):void 
 		{
+			trace("initItems " + _listtags);
+			
 			_container = getSprite("scroll_main_content");
 			var _nbitem:int = _listItems.length;
 			_lenItems = _len;
@@ -200,12 +202,13 @@ package view
 				_item.y = i * INTERLINE_ITEMS;
 				_item.setBtnDeleteVisible(_favourite);
 				
-				if (_idscreen == "actualites") {
+				if (_listtags != null && _listtags.indexOf("actualite") != -1) {
 					var _obj:Object = _listdata[i];
 					_item.ts = _obj.date;
 				}
-				
-				
+				else {
+					_item.resetTS();
+				}
 			}
 			
 			
@@ -438,6 +441,9 @@ package view
 			var _item:Component_item_scroll = _listItems[_index];
 			
 			var _url:String = _data["img_thumb"];
+			
+			if (DataGlobal.DEBUG_MODE) _url = _url.replace("http://lebeaujardin.alsace", "http://otkochersberg.izhak2.client.openagilex.net");
+			
 			if (DataGlobal.DEBUG_PERFS) {
 				_url = "";
 				//_item.visible = _index < 12;
@@ -445,7 +451,7 @@ package view
 			}
 			
 			
-			if (_url != "" && _url != "http://otkochersberg.izhak2.client.openagilex.net/") {
+			if (_url != "" && _url != "http://otkochersberg.izhak2.client.openagilex.net/" && _url != "http://lebeaujardin.alsace/") {
 				_item.urlimg = _url;
 				_item.updateComponent();
 				_item.setMaskVisible(true);
@@ -463,8 +469,10 @@ package view
 		{
 			var _texttitle:Text = getText("text_title");
 			var _textsub:Text = getText("text_subtitle");
-			_textsub.y = _texttitle.getTextBounds().height + 10;
 			
+			//_textsub.y = _texttitle.getTextBounds().height + 10;
+			trace("_texttitle.height : " + _texttitle.height);
+			_texttitle.y = 0 - _texttitle.height + 40;
 			
 			
 		}
@@ -582,6 +590,11 @@ package view
 		{
 			getSprite("screen_main_zone_noresult").visible = boolean;
 		}
+		static public function setNoResultY(_value:Number):void
+		{
+			getSprite("screen_main_zone_noresult").y = _value;
+		}
+		
 		
 		
 		static private function animChangeDetail():void 

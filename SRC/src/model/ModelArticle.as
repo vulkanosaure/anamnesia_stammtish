@@ -46,7 +46,7 @@ package model
 		}
 		
 		
-		public static function getIndexesByTags(_listtags:Array, _typecat:String):Array
+		public static function getIndexesByTags(_listtags:Array, _typecat:String, _afternow:Boolean = false):Array
 		{
 			var _output:Array = new Array();
 			var _nbtag:int = _listtags.length;
@@ -57,6 +57,8 @@ package model
 			
 			
 			var _idlisted:Array = [];
+			var _tsnow:Number = Math.round(new Date().getTime() / 1000);
+			
 			
 			//raccourci pour 1 seul tag (performances)
 			var _tagrubric:String = _listtags[0];
@@ -76,19 +78,23 @@ package model
 					}
 				}
 				else {
-					var _tag:String = _data[_typecat];
 					
 					//if (Math2.getRandProbability(0.01)) trace("- _tag : " + _tag);
 					
-					if (_tag == _tagrubric) {
-						if (_idlisted.indexOf(_data.id) == -1) {
-							_output.push(i);
-							_idlisted.push(_data.id);
+					if (!_afternow || Number(_data["date"]) > _tsnow) {
+						
+						var _tag:String = _data[_typecat];
+						
+						if (_tag == _tagrubric) {
+							if (_idlisted.indexOf(_data.id) == -1) {
+								_output.push(i);
+								_idlisted.push(_data.id);
+							}
 						}
 					}
+					
+					
 				}
-				
-				
 			}
 			
 			return _output;
@@ -151,14 +157,23 @@ package model
 			var _rawtab:Array = _rawdata as Array;
 			var _len:int = _rawtab.length;
 			
+			var _tsnow:Number = Math.round(new Date().getTime() / 1000);
+			var _counter:int = 0;
+			
 			for (var i:int = 0; i < _len; i++) 
 			{
 				var _obj:Object = _rawtab[i];
-				_obj["content"] = CharEncoding.br2nl(_obj["content"]);
-				_obj["content"] = CharEncoding.stripTags(_obj["content"]);
 				
-				_output.push(_obj);
-				if (i >= _max - 1) break;
+				if (Number(_obj["date"]) > _tsnow) {
+					_obj["content"] = CharEncoding.br2nl(_obj["content"]);
+					_obj["content"] = CharEncoding.stripTags(_obj["content"]);
+					
+					_output.push(_obj);
+					_counter++;
+					if (_counter >= _max - 1) break;
+				}
+				
+				
 			}
 			
 			return _output;

@@ -50,10 +50,12 @@ DU TERRITOIRE]]></text>
 				<img_bg>incontournables</img_bg>
 			</item>
 			
+			
+			<!-- link -->
 			<item>
 				<text><![CDATA[ÉVÈNEMENTS À VENIR
 AU KOCHERSBERG]]></text>
-				<tags>Événements</tags>
+				<tags>actualite</tags>
 				<cattype>sous_cat_label</cattype>	
 				<meteo>*</meteo>
 				<time>*</time>
@@ -62,8 +64,8 @@ AU KOCHERSBERG]]></text>
 			
 			<item>
 				<text><![CDATA[BALADES ET RANDONNÉES ?]]></text>
-				<tags>Événements</tags>					<!-- à remplir-->
-				<cattype>sous_cat_label</cattype>	
+				<tags>Balades et randonnées</tags>
+				<cattype>sous_sous_cat_label</cattype>	
 				<meteo>*</meteo>
 				<time>*</time>
 				<img_bg>esc_nature</img_bg>
@@ -71,28 +73,19 @@ AU KOCHERSBERG]]></text>
 			
 			<item>
 				<text><![CDATA[SORTIES EQUESTRES ?]]></text>
-				<tags>Événements</tags>					<!-- à remplir-->
-				<cattype>sous_cat_label</cattype>	
+				<tags>Sorties équestres</tags>
+				<cattype>sous_sous_cat_label</cattype>	
 				<meteo>*</meteo>
 				<time>*</time>
 				<img_bg>esc_nature</img_bg>
 			</item>
 			
-			<item>
-				<text><![CDATA[SENTIERS À 
-VÉLO ET EN VTT]]></text>
-				<tags>Événements</tags>					<!-- à remplir-->
-				<cattype>sous_cat_label</cattype>	
-				<meteo>*</meteo>
-				<time>*</time>
-				<img_bg>esc_nature</img_bg>
-			</item>
 			
 			<item>
 				<text><![CDATA[LES AGRICULTEURS VOUS
 OUVRENT LEUR PORTES]]></text>
-				<tags>visite de ferme</tags>
-				<cattype>sous_sous_cat_label</cattype>	
+				<tags>Terroir</tags>
+				<cattype>sous_sous_cat_label</cattype>
 				<meteo>*</meteo>
 				<time>*</time>
 				<img_bg>esc_nature</img_bg>
@@ -121,7 +114,7 @@ VOTRE LISTE]]></btn_print>
 		</share_mail>
 		
 		<filter>
-			<input_filter_help><![CDATA[Entrez une recherche]]></input_filter_help>
+			<input_filter_help><![CDATA[Votre recherche...]]></input_filter_help>
 			<no_result><![CDATA[Aucun résultats trouvés]]></no_result>
 		</filter>
 		
@@ -136,8 +129,6 @@ SUIVANTE]]></btn_next>
 			<btn_prev><![CDATA[FICHE
 PRÉCÉDENTE]]></btn_prev>
 			
-
-			
 		</screen_main>
 		
 		
@@ -145,7 +136,7 @@ PRÉCÉDENTE]]></btn_prev>
 			<actualites>
 				<title><![CDATA[ACTUALITÉS]]></title>
 				<node>list_actu</node>
-				<tags>Actualité</tags>
+				<tags>actualite</tags>
 				<cattype>sous_cat_label</cattype>
 			</actualites>
 			

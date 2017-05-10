@@ -24,12 +24,17 @@ package data2.text
 		public static var DEFAULT_SELECTABLE:Boolean = true;
 		public static var DEFAULT_DEBUGBORDER:Boolean = false;
 		
+		public static const VALIGN_TOP:String = "top";
+		public static const VALIGN_BOTTOM:String = "bottom";
+		public static const VALIGN_CENTER:String = "center";
+		
 		private const MARGIN:Number = 2;
 		
 		private var _tf:TextField;
 		
 		private var _value:String;
 		private var _width:Number;
+		private var _height:Number;
 		private var _type:String;
 		private var _multiline:Boolean;
 		private var _embedFonts:Boolean;
@@ -141,6 +146,13 @@ package data2.text
 			_tf.wordWrap = _multiline;
 			if (!isNaN(_width)) _tf.width = _width;
 			
+			if (!isNaN(_height)) {
+				//trace("text _height isNaN " + _height);
+				_tf.multiline = true;
+				_tf.autoSize = TextFieldAutoSize.NONE;
+				_tf.height = _height;
+			}
+			
 			
 			
 			if (_textformat != null) {
@@ -182,6 +194,28 @@ package data2.text
 				for (var i:int = 0; i < _listImg.length; i++) registerImg(_listImg[i]);
 				
 				_cssinit = true;
+				
+				
+				//valign
+				
+				if (_valign != "") {
+					
+					var _rheight:Number = this.rheight;
+					if (_valign == VALIGN_CENTER) {
+						_tf.y = Math.round((_height - _rheight) * 0.5);
+						trace("_center, _tf.y = ((" + _height + " - " + _rheight + ") * 0.5");
+						trace("_tf.y : " + _tf.y);
+					}
+					else if (_valign == VALIGN_BOTTOM) {
+						_tf.y = Math.round((_tf.height - _rheight));
+					}
+					else if (_valign == VALIGN_TOP) {
+						//nothing to do here
+						_tf.y = 0;
+					}
+					
+					
+				}
 			}
 			
 			
@@ -232,6 +266,10 @@ package data2.text
 		override public function set width(value:Number):void {
 			_width = value;
 			_multiline = true;
+		}
+		
+		override public function set height(value:Number):void {
+			_height = value;
 		}
 		
 		public function set template(value:String):void {_template = value;}

@@ -20,14 +20,13 @@ package data2.net.imageloader
 		public static const GROUP_RESET:String = "groupReset";
 		public static const GROUP_DEFAULT:String = "groupDefault";
 		
-		private static var _eventDispatcher:EventDispatcher;
-		private static var _items:Object;
-		private static var _group2load:Array;
-		private static var _groupName:String;
-		private static var _idloading:int;
-		private static var _timer:Timer;
 		private static var _displayReports:Boolean = false;
-		private static var _progressSave:Number;
+		
+		private static var _items:Object;
+		private static var _group2load:ImageLoaderInstance;
+		
+		private static var _eventDispatcher:EventDispatcher;
+		
 		
 		
 		
@@ -37,6 +36,8 @@ package data2.net.imageloader
 		}
 		
 		
+		
+		
 		public static function add(_loader:Loader, _src:String, _group:String = ""):void
 		{
 			//trace("ImageLoader.add(" + _loader + ", " + _src + ", " + _group + ")");
@@ -44,17 +45,29 @@ package data2.net.imageloader
 			
 			if (_items == null) _items = new Object();
 			
-			var _tabgroup:Array;
+			var _tabgroup:ImageLoaderInstance;
+			
 			if (_items[_group] == undefined) {
-				_tabgroup = new Array();
+				_tabgroup = new ImageLoaderInstance(_group);
 				_items[_group] = _tabgroup;
+				_tabgroup.addEventListener(ImageLoaderEvent.COMPLETE, onComplete);
+				
+				
+				
 			}
 			else {
-				_tabgroup = _items[_group];
+				_tabgroup = ImageLoaderInstance(_items[_group]);
 			}
 			
-			var _obj:ImageLoaderObject = new ImageLoaderObject(_loader, _src, _group);
-			_tabgroup.push(_obj);
+			_tabgroup.add(_loader, _src, _group);
+			
+			
+		}
+		
+		static private function onComplete(e:ImageLoaderEvent):void 
+		{
+			trace("ImageLoader.onComplete " + e.group);
+			if (_displayReports) displayReport(e.group);
 		}
 		
 		
@@ -74,24 +87,15 @@ package data2.net.imageloader
 				return;
 			}
 			
-			_group2load = _items[_group];
-			_groupName = _group;
-			_idloading = 0;
-			if (_group2load.length == 0){
+			_group2load = ImageLoaderInstance(_items[_group]);
+			
+			if (_group2load.nbitem == 0){
 				if (_eventDispatcher == null) _eventDispatcher = new EventDispatcher();
 				_eventDispatcher.dispatchEvent(new ImageLoaderEvent(ImageLoaderEvent.COMPLETE, GROUP_INIT));
 				return;
 			}
 			
-			loadItem(_idloading);
-			
-			if (_timer == null) {
-				_timer = new Timer(100);
-				_timer.start();
-			}
-			
-			_progressSave = 0;
-			_timer.addEventListener(TimerEvent.TIMER, onTimerEvent);
+			_group2load.loadGroup();
 		}
 		
 		
@@ -101,27 +105,23 @@ package data2.net.imageloader
 		{
 			if (_group == "") _group = GROUP_DEFAULT;
 			
-			var _tab:Array = _items[_group];
-			if (_tab == null) return null;
-			
-			for each(var _obj:ImageLoaderObject in _tab) {
-				if (_obj.src == _src && _obj.loaded) {
-					return _obj.content;
-				}
+			if (_items[_group] == null) {
+				return null;
 			}
-			return null;
+			var _tab:ImageLoaderInstance = ImageLoaderInstance(_items[_group]);
+			return _tab.getImage(_src);
+			
+			
 		}
 		
 		
 		
 		public static function isGroupLoaded(_group:String):Boolean
 		{
-			var _tab:Array = _items[_group];
-			if (_tab == null) return false;
-			for each(var _obj:ImageLoaderObject in _tab) {
-				if (!_obj.loaded) return false;
-			}
-			return true;
+			var _tab:ImageLoaderInstance = _items[_group];
+			return (_tab == null) ? false : _tab.isGroupLoaded();
+			
+			
 		}
 		
 		public static function groupExists(_group:String):Boolean
@@ -147,16 +147,11 @@ package data2.net.imageloader
 			_eventDispatcher = new EventDispatcher();
 		}
 		*/
-		static public function resetGroup(_group:String):void 
+		static public function resetGroup(__group:String):void 
 		{
-			var _oldtab:Array = _items[_group];
-			if (_oldtab != null) {
-				var _len:int = _oldtab.length;
-				for each(var _obj:ImageLoaderObject in _oldtab) {
-					_obj.loader.unload();
-				}
-			}
-			_items[_group] = new Array();
+			var _group:ImageLoaderInstance = ImageLoaderInstance(_items[__group]);
+			_group.resetGroup();
+			
 		}
 		
 		
@@ -176,58 +171,6 @@ package data2.net.imageloader
 		
 		//_________________________________________________________________________________
 		//private functions
-		
-		
-		private static function loadItem(_ind:int):void
-		{
-			/*
-			trace("loadItem(" + _ind + ") _groupName " + _groupName);
-			trace("_group2load : " + _group2load);
-			*/
-			var _obj:ImageLoaderObject = _group2load[_ind];
-			
-			if(!_obj.loaded){
-				var _request:URLRequest = new URLRequest(_obj.src);
-				_obj.loader.load(_request);
-				_obj.loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoaderComplete);
-				_obj.loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, onIOError);
-			}
-			else {
-				onLoaderComplete(null);
-			}
-		}
-		
-		
-		private static function getProgress(group2load:Array):Number 
-		{
-			var _len:int = group2load.length;
-			var _bytesLoaded:Number = 0;
-			var _bytesTotal:Number = 0;
-			
-			
-			var _nbTotalNotNull:int = _len;
-			
-			for (var i:int = 0; i < _len; i++) 
-			{
-				var _obj:ImageLoaderObject = ImageLoaderObject(group2load[i]);
-				var _loader:Loader = _obj.loader;
-				
-				var _total:Number = _loader.contentLoaderInfo.bytesTotal;
-				if (_total == 0) _nbTotalNotNull--;
-				
-				_bytesLoaded += _loader.contentLoaderInfo.bytesLoaded;
-				_bytesTotal += _total;
-				//trace("-- _bytesLoaded : " + _bytesLoaded + ", _bytesTotal : " + _bytesTotal);
-			}
-			
-			var _percentNotNull:Number = _nbTotalNotNull / _len;
-			
-			var _progress:Number = _bytesLoaded / _bytesTotal;
-			_progress *= _percentNotNull;
-			if (isNaN(_progress)) _progress = 0;
-			
-			return _progress;
-		}
 		
 		
 		
@@ -294,54 +237,6 @@ package data2.net.imageloader
 		
 		
 		
-		//_________________________________________________________________________________
-		//events
-		
-		private static function onLoaderComplete(e:Event):void 
-		{
-			//trace("ImageLoader.onLoaderComplete " + _idloading + ", len : " + _group2load.length+", _groupName : "+_groupName);
-			
-			var _obj:ImageLoaderObject = _group2load[_idloading];
-			_obj.loaded = true;
-			
-			if (e != null) {
-				var _loader:Loader = LoaderInfo(e.target).loader;
-				_obj.content = _loader.content;
-			}
-			
-			_idloading++;
-			if (_idloading >= _group2load.length) {
-				trace("ImageLoader.COMPLETE");
-				_eventDispatcher.dispatchEvent(new ImageLoaderEvent(ImageLoaderEvent.COMPLETE, _groupName));
-				_timer.removeEventListener(TimerEvent.TIMER, onTimerEvent);
-				
-				if (_displayReports) displayReport(_groupName);
-			}
-			else loadItem(_idloading);
-			
-		}
-		
-		
-		
-		private static function onIOError(e:IOErrorEvent):void 
-		{
-			throw new Error("ChargeurXMLManager.onIOError " + e);
-		}
-		
-		
-		
-		static private function onTimerEvent(e:Event):void 
-		{
-			var _progress:Number = getProgress(_group2load);
-			
-			if(_progress > _progressSave){
-				var _evt:ImageLoaderEvent = new ImageLoaderEvent(ImageLoaderEvent.PROGRESS, _groupName);
-				_evt.progress = _progress;
-				_eventDispatcher.dispatchEvent(_evt);
-				_progressSave = _progress;
-			}
-			
-		}
 		
 		
 		

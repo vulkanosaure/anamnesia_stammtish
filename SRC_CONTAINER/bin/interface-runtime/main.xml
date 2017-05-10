@@ -56,9 +56,9 @@
 				<is>
 					
 					
-					<Text id='text_title' marginLeft='226px' marginTop='0px' embedFonts='true' multiline='true' width='500' removeLineBreak="true"><![CDATA[]]></Text>
+					<Text id='text_title' marginLeft='226px' marginTop='0px' embedFonts='true' multiline='true' width='500' height="100" valign="bottom" removeLineBreak="true"><![CDATA[]]></Text>
 					
-					<Text id='text_subtitle' marginLeft='226px' marginTop='75px' embedFonts='true' width='500'><![CDATA[]]></Text>
+					<Text id='text_subtitle' marginLeft='226px' marginTop='42px' embedFonts='true' width='500'><![CDATA[]]></Text>
 					
 					
 					<!-- field search -->
@@ -105,6 +105,7 @@
 						</is>
 					</is>
 					
+					
 					<is id="screen_main_zone_noresult" marginLeft="204px" marginTop="180px">
 						<Text id='text_zone_noresult' embedFonts='true' width='400' multiline="true"><![CDATA[]]></Text>
 						<is id="btn_back_filter" marginLeft="180px" marginTop="44px" onmousedown='as:#ascodescreenmain  onClickResetFilter' clickableMargin='40' cm_top="23">
@@ -129,8 +130,9 @@
 					<Scrollbar id="scroll_zone_list_actu" touchMode="true" template="ScrollbarSkin" width="290" height="389" marginTop='44px' arrow="false" always_visible="true" handleAutoSize="false">
 						<is id='zone_list_actu'>
 							<behaviours><VLayout interline="30" /></behaviours>
-							<!-- 
 							
+							
+							<!-- 
 							
 							<is>
 								<Text embedFonts='true'><![CDATA[<span class='MS700_11_FFFFFF'>Rattrapage collecte 1er et 11 novembre</span>]]></Text>
