@@ -115,7 +115,7 @@ VOTRE LISTE]]></btn_print>
 		
 		<filter>
 			<input_filter_help><![CDATA[Votre recherche...]]></input_filter_help>
-			<no_result><![CDATA[Aucun résultats trouvés]]></no_result>
+			<no_result><![CDATA[Retour à la liste]]></no_result>
 		</filter>
 		
 		
@@ -268,18 +268,12 @@ PRÉCÉDENTE]]></btn_prev>
 		
 		<credits>
 			<title><![CDATA[CRÉDITS]]></title>
-			<desc><![CDATA[<span class='MS900_15_FFFFFF'>COLLECTIONS</span>
-			
-<span class='MS300_15_FFFFFF'>Lorem ipsum dolor sit amet
-Consectetur adipiscing elit. 
-Nunc consectetur tortor in scelerisque bibendum.</span>
+			<desc><![CDATA[
+
+<span class='MS900_15_FFFFFF'>ANAMNESIA</span>
 
 
-<span class='MS900_15_FFFFFF'>PHOTOGRAPHIES</span>
-
-<span class='MS300_15_FFFFFF'>Lorem ipsum dolor sit amet
-Consectetur adipiscing elit. 
-Nunc consectetur tortor in scelerisque bibendum.</span>]]></desc>
+<span class='MS900_15_FFFFFF'>IZHAK</span>]]></desc>
 		
 		</credits>
 		
