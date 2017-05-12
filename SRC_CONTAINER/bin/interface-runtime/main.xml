@@ -98,8 +98,10 @@
 							</is>
 							
 							<is id="btn_print" onmousedown='as:#ascodescreenmain  onClickPrint' clickableMargin='0' cm_right="70" cm_vert="30" marginLeft="130px" marginTop="452px">
-								<Text id='text_btn_print' embedFonts='true' width='200' multiline="true"><![CDATA[]]></Text>
-								<is template="asset_btn_print" scaleX="0.65" scaleY="0.65" marginLeft="216px" marginTop="2px" />
+								<is visible="false">
+									<Text id='text_btn_print' embedFonts='true' width='200' multiline="true"><![CDATA[]]></Text>
+									<is template="asset_btn_print" scaleX="0.65" scaleY="0.65" marginLeft="216px" marginTop="2px" />
+								</is>
 							</is>
 							
 						</is>
